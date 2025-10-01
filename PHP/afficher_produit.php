@@ -1,0 +1,65 @@
+<?php
+require_once "../Config/config.php";
+
+try {
+    // Supprimer si demandé
+    if ($_GET['action'] ?? '' === 'supprimer' && isset($_GET['id'])) {
+        $stmt = $pdo->prepare("DELETE FROM produit WHERE ID_PRODUIT = :id");
+        $stmt->execute([':id' => (int)$_GET['id']]);
+        header("Location: afficher_produit.php?message=Produit supprimé avec succès");
+        exit;
+    }
+
+ // Récupérer produits
+    $produits = $pdo->query("SELECT * FROM produit")->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur : " . htmlspecialchars($e->getMessage()));
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../CSS/style_afficher_produit.css">
+  <title>liste Produits</title>
+</head>
+<body>
+ <div>
+    <div class="form-container">
+  <h1>Liste Des Produits De La Boutique</h1>
+  <div class="button-group"><a href="ajout_produit.php"><button>Ajouter un produit</button></a></div>
+  
+  <?php if (!empty($_GET['message'])): ?>
+    <p class="<?= strpos($_GET['message'], 'Erreur') ? 'error' : 'success' ?>">
+      <?= htmlspecialchars($_GET['message']) ?>
+    </p>
+    
+  <?php endif; ?>
+   </div>
+  <?php if ($produits): ?>
+    <table>
+      <tr>
+        <th>Nom</th><th>Prix</th><th>Stock</th>
+        <th>Date Fabrication</th><th>Date Péremption</th><th>Action</th>
+      </tr>
+      <?php foreach ($produits as $p): ?>
+        <tr>
+          <td><?= htmlspecialchars($p['NOM_PRODUIT']) ?></td>
+          <td><?= htmlspecialchars($p['PRIX']) ?> FCFA</td>
+          <td><?= htmlspecialchars($p['STOCK']) ?></td>
+          <td><?= htmlspecialchars($p['DATE_DE_FABRICATION']) ?></td>
+          <td><?= htmlspecialchars($p['DATE_DE_PEREMPTION']) ?></td>
+          <td>
+            <a href="ajout_produit.php?id=<?= $p['ID_PRODUIT'] ?>">Modifier</a> |
+            <a href="?action=supprimer&id=<?= $p['ID_PRODUIT'] ?>"
+               onclick="return confirm('Voulez-vous supprimer ce produit ?');">Supprimer</a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+  <?php else: ?>
+    <p>Aucun produit trouvé.</p>
+  <?php endif; ?>
+</div>
+</body>
+</html>
