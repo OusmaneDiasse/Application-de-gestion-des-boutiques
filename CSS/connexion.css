@@ -1,0 +1,87 @@
+ body{
+    background-color: #f4f4f4;
+}
+ form{
+   display: flex;
+   flex-direction: column;
+   border: 10px solid white;
+   border-radius: 10px;
+   box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+   width: 30%;
+   padding: 20px;
+   height: 350%;
+   background-color: white;
+}
+h1,p,label{
+   padding-left: 10px;
+}
+p{
+   font-size: 16px;
+   margin-bottom: 10px;
+}
+.gestion{
+   border: 10px solid rgb(128, 0, 32);
+   border-radius: 10px;
+   box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+   height: 350%;
+   padding: 20px;
+   background-color: rgb(128, 0, 32);
+   color: white;
+}
+label{
+   font-weight: bold;
+   font-size: 16px;
+}
+.container{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+    margin-top: 7%;
+    align-items: center; /*aligne verticalement */
+    margin-top: 7%;
+}
+
+ input,button{
+   margin: 10px;
+   font-size: 16px;
+   padding: 6px;
+   border-radius: 6px;
+} 
+.annuler,
+.connexion{
+   border-color: rgb(128, 0, 32);
+   background-color: rgb(128, 0, 32);
+   color: white;
+   text-align: left;
+   padding-left: 30px;
+   padding-right: 30px;
+    padding-bottom: 5px;
+   padding-top: 5px;
+}  
+.lien,
+.oublié{
+   text-decoration: none;
+   color: rgb(128, 0, 32);
+}
+.annuler{
+   padding-left: 50px;
+   padding-right: 50px;
+}
+.oublié{
+   text-align: left;
+   padding: 8px;
+}
+img{
+background-color: rgb(128, 0, 32);
+color: rgb(128, 0, 32);
+width: 250px;
+height: 250px;
+padding-left: 10px;
+}
+.bouton{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   gap: 10px;
+}
