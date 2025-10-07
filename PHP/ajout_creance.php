@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
         ':montant'   => $montant_du,
         ':date'      => $_POST['DATE_CREANCE'],
-        ':statut'    => 0, 
+        ':id_statut'    => $id_statut, 
         ':id_facture'=> $id_facture
     ];
 
-    $stmt = $pdo->prepare("INSERT INTO creance (MONTANT_DU, DATE_ECHEANCE, STATUT, FAC_ID_FACTURE) 
-                                 VALUES (:montant, :date, :statut, :id_facture)");
+    $stmt = $pdo->prepare("INSERT INTO creance (MONTANT_DU, DATE_ECHEANCE, ID_STATUT, FAC_ID_FACTURE) 
+                                 VALUES (:montant, :date, :id_statut, :id_facture)");
     $stmt->execute($data);
 
     // Redirection vers la liste des créances
