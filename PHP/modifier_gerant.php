@@ -7,9 +7,9 @@
      </head>
      <body>
       <?php
-         require "config.php";
+         require "../Config/config.php";
           $ID_UTILISATEUR=$_GET['id'];
-          $reponse = $bdd->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=:id');
+          $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=:id');
           $reponse->execute(array('id' =>$ID_UTILISATEUR));
           $utilisateur = $reponse->fetch();
         ?>

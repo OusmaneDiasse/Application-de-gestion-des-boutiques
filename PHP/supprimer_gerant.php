@@ -1,9 +1,9 @@
 <?php
-require 'config.php';
+require '../Config/config.php';
 if (isset($_GET['id'])) {
     $ID_UTILISATEUR = $_GET['id'];
 
-    $req = $bdd->prepare("DELETE FROM utilisateur WHERE ID_UTILISATEUR = :id");
+    $req = $pdo->prepare("DELETE FROM utilisateur WHERE ID_UTILISATEUR = :id");
     $success = $req->execute(['id' => $ID_UTILISATEUR]);
 
     if ($success) {
