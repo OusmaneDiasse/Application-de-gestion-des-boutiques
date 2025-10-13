@@ -16,7 +16,7 @@ body {
     background-color: rgb(128, 0, 32);
     border-radius: 10px;
     box-shadow: 0 3px 8px gray;
-    width: 800px;
+    width: 900px;
     color: white;
     padding: 25px;
 }
@@ -65,7 +65,6 @@ th {
     background-color: #f2f2f2;
 }
 
-/* Messages */
 .message {
     padding: 10px;
     margin-bottom: 10px;
@@ -85,36 +84,37 @@ th {
     text-align: center;
 }
 
-/* Conteneur recherche */
 .search-container {
     margin-top: 20px;
     text-align: center;
 }
 
-/* Input style identique au formulaire */
+.search-container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
 .search-container input[type="text"] {
     padding: 10px;
-    width: 250px;
+    width: 500px;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     box-shadow: 0 2px 5px gray;
 }
 
-/* Bouton recherche */
 .search-container button {
-    padding: 10px 15px;
-    margin-left: 10px;
+    margin: 28px 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px 9px;
     border: none;
     border-radius: 5px;
     background-color: white;
-    color: rgb(128, 0, 32);
-    font-size: 16px;
+    color: black ;
+    font-size: 15px;
     cursor: pointer;
     box-shadow: 0 2px 5px gray;
 }
-
-.search-container button:hover {
-    background-color: rgb(230, 230, 230);
-}
-
