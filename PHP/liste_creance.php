@@ -16,9 +16,14 @@ try {
             JOIN facture f ON c.ID_FACTURE = f.ID_FACTURE
             JOIN client cli ON f.ID_CLIENT = cli.ID_CLIENT
             WHERE cli.NOM_CLIENT LIKE :recherche";
+<<<<<<< HEAD
 
     if ($id_statut !== '') {
         $sql .= " AND c.ID_STATUT = :id_statut";
+=======
+    if ($statut !== '') {
+        $sql .= " AND c.ID_STATUT = :statut";
+>>>>>>> bea37c9 (Mise à jour des codes)
     }
 
     $sql .= " ORDER BY c.DATE_ECHEANCE ASC";
@@ -80,9 +85,15 @@ try {
         <td><?= htmlspecialchars($c['NOM_CLIENT']) ?></td>
         <td><?= htmlspecialchars($c['MONTANT_DU']) ?></td>
         <td><?= htmlspecialchars($c['DATE_ECHEANCE']) ?></td>
+<<<<<<< HEAD
         <td><?= $c['ID_STATUT'] == 2 ? "Terminé" : "En cours"; ?></td>
         <td>
           <?php if ($c['ID_STATUT'] == 1): ?>
+=======
+        <td><?= $c['ID_STATUT'] == 1 ? "Terminé" : "En cours"; ?></td>
+        <td>
+          <?php if ($c['ID_STATUT'] == 0): ?>
+>>>>>>> bea37c9 (Mise à jour des codes)
             <a href="#?id=<?= $c['ID_CREANCE'] ?>">Ajouter un nouveau paiement</a>
           <?php endif; ?>
         </td>
