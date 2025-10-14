@@ -2,7 +2,7 @@
 require "../Config/config.php";
  $message = "";
      if (isset($_GET['successe']) && $_GET['successe'] == 1) {
-     $message = '<div class="alertsuccess">Ce client existe déja.</div>';
+     $message = '<div class="alertsuccess">Ce client existe déja</div>';
     }  
     ?>
 <!DOCTYPE html>

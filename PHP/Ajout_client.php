@@ -21,7 +21,7 @@
      'email' => $E_MAIL_CLIENT,
      'prive' => $hashedPassword
      ));
-        echo "✅ Client ajouté avec succès.";
+        echo "✅ Client ajouté avec succès";
     }
   }
 ?>
