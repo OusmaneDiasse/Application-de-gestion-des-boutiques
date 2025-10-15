@@ -9,7 +9,7 @@
    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
    width: 30%;
    padding: 20px;
-   height: 350%;
+   height: 400px;
    background-color: white;
 }
 h1,p,label{
@@ -23,7 +23,7 @@ p{
    border: 10px solid rgb(128, 0, 32);
    border-radius: 10px;
    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
-   height: 350%;
+   height: 400px;
    padding: 20px;
    background-color: rgb(128, 0, 32);
    color: white;

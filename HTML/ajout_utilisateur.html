@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Ajout Employé</title>  
+  <link rel="stylesheet" href="../CSS/style_utilisateur.css">
+</head>
+<body>
+
+   <div class="container">
+      <form method="post" action="../PHP/ajout_utilisateur.php">
+
+       <h1>Employé</h1> 
+<p>
+  <label for="role">Rôle</label>
+  <select name="role" id="role" placeholder="Ex. : Propriétaire ou Gérant" required>
+  <option value="Propriétaire">Propriétaire</option>
+  <option value="Gérant">Gérant</option>
+  </select>
+</p>
+<p>
+  <label for="nom_et_prenom">Nom et Prénom</label>  
+  <input type="text" name="nom_et_prenom" id="nom_et_prenom" placeholder="Ex. : Adja Goudiaby" required>
+</p>
+<p>
+  <label for="email">Email</label> 
+  <input type="email" name="email" id="email" placeholder="Ex. : asg@gmail.com" required>
+</p>
+<p>
+  <label for="mot_de_passe">Mot de passe</label> 
+  <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Entrez le mot de passe" required>
+  <i class="fa-solid fa-eye"></i>
+</p>
+
+  <div class="buttons">
+     <input type="submit" value="Ajouter" class="button-ajouter">
+     <input type="reset" value="Annuler" class="button-annuler">
+  </div>
+</form>
+</div>
+</body>
+</html>

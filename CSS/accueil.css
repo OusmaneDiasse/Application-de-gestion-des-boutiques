@@ -1,0 +1,190 @@
+body{
+    background-color: #f4f4f4;
+padding: 0%;
+margin: 0%;
+}
+.gestion{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*aligne verticalement */
+    justify-content: center;
+    gap: 20px;
+} 
+.bienvenue{
+   text-align: center; ;
+   border: 10px solid rgb(128, 0, 32);
+    border-radius: 60px;
+   box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+    background-color: rgb(128, 0, 32);
+    color: white;
+    width: 1150px;
+    height: 90px;
+}
+.informations{
+  display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-left: 500px;
+     margin-right: 43em;
+     margin-left: 190px;
+}
+.affaires,
+.ventes,
+.creances,
+.produits{
+    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 20px;
+    
+}
+.affaires{
+    background-color: rgb(128, 0, 32);
+    color: white;
+   padding-top: 10px;
+    width: 15em;
+    height: 80px;
+
+}
+.ventes{
+    background-color: rgb(40, 167, 69);
+    color: white;
+    padding-top: 10px;
+    width: 15em;
+    height: 80px;
+}
+.creances{
+    background-color: rgb(255, 193, 7);
+    color: black;
+    padding-top: 10px;
+    width: 15em;
+    height: 80px;
+}
+.produits{
+    background-color: #dc3545;  
+    color: white;
+    padding-top: 10px;
+    width: 15em;
+    height: 80px;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.boutton1,
+.boutton2,
+.boutton3,
+.boutton4{
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+    width: 200px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+.boutton1{
+    background-color: rgb(128, 0, 32);
+    color: white;
+}
+.boutton2{
+    background-color: rgb(40, 167, 69);
+    color: white;
+}
+.boutton3{
+    background-color: rgb(255, 193, 7);
+    color: black;
+}
+.boutton4{
+    background-color: #dc3545;  
+    color: white;
+}
+table{
+    border-collapse: collapse;
+}
+td,th{
+    border: 1px solid black;
+    text-align: center;
+    font-size: 16px;
+    width: 400px;}
+  
+caption{
+    font-size: 23px;
+    text-align: left;
+    background-color: rgb(128, 0, 32);
+    color: white;
+    text-align: center;
+}
+.produit{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+.table{
+    width: 850px;
+    background-color: white;
+}
+.tableau{
+      background-color: white;
+      width: 600px;
+       margin-right: 15px;
+}
+.block{
+background-color: white;
+      width: 600px;
+      
+}
+a{
+    text-decoration: none;
+    color: white;
+    
+}
+.lien{
+    width: 13em;
+     border-radius: 20px;
+     box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+     background-color: rgb(128, 0, 32);
+     padding-top: 25px;
+     padding-bottom: 15px;
+     text-align: center;
+     height: 50px;
+     margin-top: 15px;
+}
+.solde{
+    display: flex;
+    align-items: flex-start; /* permet aux éléments de commencer en haut */
+    align-content: flex-start;
+    margin-left: 10px;
+    gap: 10px;
+}
+.valeur,
+.total,
+.rupture,
+.nombre
+{
+    font-size: 20px;
+}
+.deux{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.recent{
+    background-color: white;
+      width: 600px;
+       margin-right: 15px;
+}
+.achete{
+      background-color: white;
+      width: 600px;
+}

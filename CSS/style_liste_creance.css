@@ -43,7 +43,6 @@ th {
     background-color: #f2f2f2;
 }
 
-
 .message {
     padding: 10px;
     margin-bottom: 10px;
@@ -63,12 +62,10 @@ th {
     text-align: center;
 }
 
-
 .search-container {
     margin-top: 20px;
     text-align: center;
 }
-
 
 .search-container form {
     display: flex;
@@ -86,8 +83,10 @@ th {
     box-shadow: 0 2px 5px gray;
 }
 
-
 .search-container button {
+    margin: 28px 0 ;
+    display: flex;
+    justify-content: center;
     padding: 10px 9px;
     border: none;
     border-radius: 5px;

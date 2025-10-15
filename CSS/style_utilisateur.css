@@ -1,0 +1,73 @@
+body {
+    background-color: white;
+    justify-content: center;
+    display: flex;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    align-items: center;
+}
+.container {
+    background-color: rgb(128,0,32);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    width: 355px;
+    padding: 25px;
+}
+.container h1 {
+    text-align: center;
+    color: white;
+    margin: 20px;
+}
+label {
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+form input, form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+input {
+    font-size: 13px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 2px;
+    border: 1px solid;
+    outline: none;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.button-ajouter {
+     background-color: white; 
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    flex: 1;             
+    margin: 0 5px;
+    height: 42px;        
+}
+.button-annuler {
+    background-color: white; 
+    color:black;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    flex: 1;
+    margin: 0 5px;
+    height: 42px;
+}
