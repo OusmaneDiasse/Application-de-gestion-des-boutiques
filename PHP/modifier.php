@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
      <head>
-         <meta charset="uft-8" />
+         <meta charset="uft-8"/>
          <link rel="stylesheet" href="../CSS/Styl.css">
          <title>Profil utilisateur</title>
      </head>
