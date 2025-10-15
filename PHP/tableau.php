@@ -27,14 +27,6 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
 ?>
 <?php 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    require "config.php";
-=======
-    require "../Config/config.php";
->>>>>>> 073f4a71d3b2bc6389bc54e55ba35a494bbf26df
->>>>>>> d0ed570610dac134d2b03123ee3728ad36a3834e
     if (isset($_POST['id'])) {
     $TELEPHONE_UTILISATEUR = $_POST['editPhone']; 
     $ADRESS_UTILISATEUR = $_POST['editAddress'];
@@ -44,11 +36,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
-<<<<<<< HEAD
-        $req = $bdd->prepare('UPDATE utilisateur
-=======
         $req = $pdo->prepare('UPDATE utilisateur
->>>>>>> 073f4a71d3b2bc6389bc54e55ba35a494bbf26df
        SET TELEPHONE_UTILISATEUR = :nvphone, 
      NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress,
@@ -62,11 +50,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
        'nvname' =>     $NOM_UTILISATEUR
     ));
 }else{
-<<<<<<< HEAD
-     $req = $bdd->prepare('UPDATE utilisateur
-=======
      $req = $pdo->prepare('UPDATE utilisateur
->>>>>>> 073f4a71d3b2bc6389bc54e55ba35a494bbf26df
      SET TELEPHONE_UTILISATEUR = :nvphone, 
       NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress
@@ -104,15 +88,10 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
      </head>
    <body>
      <?php 
-<<<<<<< HEAD
-       require "config.php";
-        $reponse = $bdd->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
-=======
         $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
->>>>>>> 073f4a71d3b2bc6389bc54e55ba35a494bbf26df
         WHERE NOM_DU_ROLE="Gerant" ');
         ?>
-    <div class="All">
+    <div class="All text" >
        <?php echo $message; ?>
        <?php echo $ghat; ?>
      <div class="introduction">
@@ -154,7 +133,7 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
              <?php endforeach ?>
          </table>
             <?php else: ?>
-            <p>Aucun produit trouvé</p>
+            <p>Aucun gerant trouvé</p>
             <?php endif; ?>
   </div>
    </body>
