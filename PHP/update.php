@@ -18,7 +18,7 @@
        'nvphone' => $TELEPHONE_UTILISATEUR,
        'nvaddress' => $ADRESS_UTILISATEUR,
        'nvpassword' =>  $hashedPassword ,
-       'id'     =>     $ID_UTILISATEUR,
+       'id'     =>    $ID_UTILISATEUR,
        'nvname' =>     $NOM_UTILISATEUR
     ));
 }else{

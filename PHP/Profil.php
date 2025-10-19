@@ -8,7 +8,7 @@
      <body>
      <?php
            require_once "../Config/config.php";
-      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=1');
+      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=1');
           $utilisateur = $reponse->fetch();
           ?>
          <div class="Profil" id="profileView"> 
