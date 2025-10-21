@@ -1,13 +1,41 @@
 /*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     14/10/2025 15:49:54                          */
+/*==============================================================*/
+
+
+drop table if exists CLIENT;
+
+drop table if exists CREANCE;
+
+drop table if exists FACTURE;
+
+drop table if exists PAIEMENT;
+
+drop table if exists PRODUIT;
+
+drop table if exists ROLE;
+
+drop table if exists STATUT;
+
+drop table if exists STOCK;
+
+drop table if exists UTILISATEUR;
+
+drop table if exists VENDRE;
+
+/*==============================================================*/
 /* Table: CLIENT                                                */
 /*==============================================================*/
 create table CLIENT
 (
    ID_CLIENT            int not null,
-   NOM_CLIENT           varchar(250),
-   E_MAIL_CLIENT        varchar(250),
-   MOT_DE_PASSE         varchar(250),
-   TELEPHONE            int,
+   NOM_CLIENT           varchar(255),
+   E_MAIL_CLIENT        varchar(255),
+   MOT_DE_PASSE         varchar(255),
+   TELEPHONE_CLIENT     int,
+   CODE_REINIT_CLIENT   int,
+   FLAG_REINIT_CLIENT   bool,
    primary key (ID_CLIENT)
 );
 
@@ -32,7 +60,7 @@ create table FACTURE
    ID_FACTURE           int not null,
    ID_CLIENT            int not null,
    ID_UTILISATEUR       int not null,
-   TYPE_DE_PAYMENT      varchar(250),
+   TYPE_DE_PAYMENT      varchar(255),
    MONTANT_TOTAL        int,
    primary key (ID_FACTURE)
 );
@@ -46,7 +74,7 @@ create table PAIEMENT
    ID_CREANCE           int not null,
    DATE_PAIEMENT        date,
    MONTANT_PAYE         int,
-   MODE_PAIEMENT        varchar(250),
+   MODE_PAIEMENT        varchar(255),
    primary key (ID_PAIEMENT)
 );
 
@@ -56,7 +84,7 @@ create table PAIEMENT
 create table PRODUIT
 (
    ID_PRODUIT           int not null,
-   NOM_PRODUIT          varchar(250),
+   NOM_PRODUIT          varchar(255),
    PRIX                 int,
    STOCK                int,
    DATE_DE_FABRICATION  date,
@@ -70,7 +98,7 @@ create table PRODUIT
 create table ROLE
 (
    ID_ROLE              int not null,
-   NOM_DU_ROLE          varchar(250),
+   NOM_DU_ROLE          varchar(255),
    primary key (ID_ROLE)
 );
 
@@ -80,7 +108,7 @@ create table ROLE
 create table STATUT
 (
    ID_STATUT            int not null,
-   LIBELLE              varchar(250),
+   LIBELLE              varchar(255),
    primary key (ID_STATUT)
 );
 
@@ -94,9 +122,8 @@ create table STOCK
    QUANTITE_ACHETEE     int,
    PRIX_ACHAT           int,
    DATE_ACHAT           date,
-   FOURNISSEUR          varchar(250),
-   OBSERVATION          varchar(250),
-   PRIX_ACHAT_TOTALE    int,
+   FOURNISSEUR          varchar(255),
+   OBSERVATION          varchar(255),
    primary key (ID_STOCK)
 );
 
@@ -107,11 +134,13 @@ create table UTILISATEUR
 (
    ID_UTILISATEUR       int not null,
    ID_ROLE              int not null,
-   NOM_UTILISATEUR      varchar(250),
-   E_MAIL_UTILISATEUR   varchar(250),
-   MOT_DE_PASSE_UTILISATEUR varchar(250),
+   NOM_UTILISATEUR      varchar(255),
+   E_MAIL_UTILISATEUR   varchar(255),
+   MOT_DE_PASSE_UTILISATEUR varchar(255),
    TELEPHONE_UTILISATEUR int,
-   ADRESS_UTILISATEUR   varchar(250),
+   ADRESS_UTILISATEUR   varchar(255),
+   CODE_REINIT_UTILISATEUR int,
+   FLAG_REINIT_UTILISATEUR bool,
    primary key (ID_UTILISATEUR)
 );
 
