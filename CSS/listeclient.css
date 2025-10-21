@@ -1,0 +1,75 @@
+body{
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+.tableau{
+    font-size: 16px;
+    width: 60%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 250px;
+}
+table, th, td{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+th{
+    font-size: 16px;
+    background-color: #f4f4f4;
+}
+table{
+    border-collapse: collapse;
+    width: 950px;
+    background-color: white;
+}
+.caption{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+input{
+    border:1px solid black ;
+}
+form{
+    width: 700px;
+    margin-left: 110px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 10px;
+}
+input{
+    width: 400px;
+    height: 37px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: white;
+}
+button{
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 150px;
+    background-color: white;
+    border: 2px solid white;
+}
+.block{
+    background-color: rgb(128, 0, 32);
+    border-radius: 2px;
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+}
+.client{
+   margin-left: 390px;
+}
