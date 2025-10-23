@@ -44,6 +44,7 @@ if (isset($_POST['verifier'])) {
         <form method="POST">
             <label>Entrez le code reçu</label>
             <input type="number" name="code" required>
+            
             <div class="button-group">
             <button type="submit" name="verifier">Vérifier</button>
             <button type="button" onclick="window.location.href='mot_de_pass_oublie.php'">Annuler</button>

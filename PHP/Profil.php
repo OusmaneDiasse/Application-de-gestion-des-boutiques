@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
      <head>
+<<<<<<< HEAD
          <meta charset="uft-8"/>
+=======
+         <meta charset="uft-8" />
+>>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
          <link rel="stylesheet" href="../CSS/Styl.css">
          <title>Profil utilisateur</title>
      </head>
      <body>
      <?php
            require_once "../Config/config.php";
+<<<<<<< HEAD
       $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=1');
+=======
+      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=1');
+>>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
           $utilisateur = $reponse->fetch();
           ?>
          <div class="Profil" id="profileView"> 
