@@ -99,7 +99,7 @@ $clients = $recupereClient->fetchAll(PDO::FETCH_ASSOC);
    </div>
 
    <div class="enregistrer-container">
-      <button type="submit" class="button">Enregistrer</button>
+      <button type="submit" class="button"> Enregistrer </button>
    </div>
   </div>
 </form>
