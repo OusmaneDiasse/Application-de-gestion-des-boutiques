@@ -36,6 +36,10 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $hashedPassword = password_hash($MOT_DE_PASSE_UTILISATEUR, PASSWORD_ARGON2I);
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
+    if (strlen($MOT_DE_PASSE_UTILISATEUR) < 8) {
+    echo 'Le mot de passe doit contenir au moins 8 caractères.';
+    exit();
+    }
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
         $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
@@ -43,7 +47,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
      ADRESS_UTILISATEUR   = :nvaddress,
     MOT_DE_PASSE_UTILISATEUR = :nvpassword 
     WHERE ID_UTILISATEUR = :id'); 
-        $success= $req->execute(array(
+        $successe= $req->execute(array(
        'nvphone' => $TELEPHONE_UTILISATEUR,
        'nvaddress' => $ADRESS_UTILISATEUR,
        'nvpassword' =>  $hashedPassword ,
@@ -73,10 +77,13 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 ?>
 <?php
 $ghat = "";
+$ghat = "";
 if (isset($_GET['successe']) && $_GET['successe'] == 1) {
+    $ghat = '<div class="alertsuccess"> Gérant modifier avec succès</div>';
     $ghat = '<div class="alertsuccess"> Gérant modifier avec succès</div>';
 }
 if (isset($_GET['errore']) && $_GET['errore'] == 1) {
+    $ghat = '<div class="alerterror">❌ Erreur lors de la modification du gérant</div>';
     $ghat = '<div class="alerterror">❌ Erreur lors de la modification du gérant</div>';
 }
 ?>
@@ -94,6 +101,7 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
         ?>
     <div class="All text" >
        <?php echo $message; ?>
+       <?php echo $ghat; ?>
        <?php echo $ghat; ?>
      <div class="introduction">
          <h2> Liste des Gerants De La Boutique </h2>
@@ -119,7 +127,13 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
                <th>Action</th>
              </tr>
                   <?php foreach ($gerant as $g): ?>
+                  <?php foreach ($gerant as $g): ?>
              <tr>
+                <td><?php echo htmlspecialchars ($g['NOM_UTILISATEUR']) ?></td>
+                <td><?php echo htmlspecialchars ($g['E_MAIL_UTILISATEUR']) ?></td>
+                <td><?php echo htmlspecialchars ($g['NOM_DU_ROLE']) ?></td>
+                <td><?php echo htmlspecialchars ($g['TELEPHONE_UTILISATEUR']) ?>
+                <td><?php echo htmlspecialchars ($g['ADRESS_UTILISATEUR']) ?></td>
                 <td><?php echo htmlspecialchars ($g['NOM_UTILISATEUR']) ?></td>
                 <td><?php echo htmlspecialchars ($g['E_MAIL_UTILISATEUR']) ?></td>
                 <td><?php echo htmlspecialchars ($g['NOM_DU_ROLE']) ?></td>
@@ -128,11 +142,20 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
                 <td>
                 <a href="modifier_gerant.php?id=<?=htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Modifier</button></a> 
                 <a href="supprimer_gerant.php?id=<?php echo htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Supprimer</button></a>
+                <a href="modifier_gerant.php?id=<?=htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Modifier</button></a> 
+                <a href="supprimer_gerant.php?id=<?php echo htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Supprimer</button></a>
                 </td>
                 
               </tr>        
              <?php endforeach ?>
+                
+              </tr>        
+             <?php endforeach ?>
          </table>
+            <?php else: ?>
+            <p>Aucun gerant trouvé</p>
+            <?php endif; ?>
+  </div>
             <?php else: ?>
             <p>Aucun gerant trouvé</p>
             <?php endif; ?>
