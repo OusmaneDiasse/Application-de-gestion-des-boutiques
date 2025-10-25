@@ -18,6 +18,25 @@ try {
 }
 ?>
 <?php
+require "../Config/config.php";
+try {
+    $recherche = $_GET['search'] ?? '';
+
+
+    if (isset($_GET['reset'])) {
+    $recherche = '';
+    }
+       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
+        WHERE ROLE_ID=2 AND NOM_UTILISATEUR like :recherche";
+         $stmt = $pdo->prepare($sql);
+         $params = [':recherche' => "%$recherche%"];
+          $stmt->execute($params);
+           $gerant = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur : " . htmlspecialchars($e->getMessage()));
+}
+?>
+<?php
  $message = "";
      if (isset($_GET['success']) && $_GET['success'] == 1) {
      $message = '<div class="alertsuccess"> Gérant supprimé avec succès</div>';
@@ -39,14 +58,19 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $hashedPassword = password_hash($MOT_DE_PASSE_UTILISATEUR, PASSWORD_ARGON2I);
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
+    if (strlen($MOT_DE_PASSE_UTILISATEUR) < 8) {
+    echo 'Le mot de passe doit contenir au moins 8 caractères.';
+    exit();
+    }
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
+        $req = $pdo->prepare('UPDATE utilisateur
         $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
      NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress,
     MOT_DE_PASSE_UTILISATEUR = :nvpassword 
     WHERE ID_UTILISATEUR = :id'); 
-        $success= $req->execute(array(
+        $successe= $req->execute(array(
        'nvphone' => $TELEPHONE_UTILISATEUR,
        'nvaddress' => $ADRESS_UTILISATEUR,
        'nvpassword' =>  $hashedPassword ,
@@ -54,6 +78,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
        'nvname' =>     $NOM_UTILISATEUR
     ));
 }else{
+     $req = $pdo->prepare('UPDATE utilisateur
      $req = $pdo->prepare('UPDATE utilisateur
      SET TELEPHONE_UTILISATEUR = :nvphone, 
       NOM_UTILISATEUR = :nvname,
@@ -93,14 +118,28 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
    <body>
      <?php 
         $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
+        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
         WHERE NOM_DU_ROLE="Gerant" ');
         ?>
+    <div class="All text" >
     <div class="All text" >
        <?php echo $message; ?>
        <?php echo $ghat; ?>
      <div class="introduction">
          <h2> Liste des Gerants De La Boutique </h2>
+         <h2> Liste des Gerants De La Boutique </h2>
          <a href="ajout_gerant.php" class="btn">Ajouter un gerant</a>
+
+         <div class="search-container">
+              <form method="GET" action="">
+                    <input type="text" name="search" placeholder="Rechercher un gerant..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                    <button type="submit">Rechercher</button>
+                    <button type="submit" name="reset" value="">Réinitialiser</button>
+              </form>
+           </div>
+               
+        </div>
+        <?php if($gerant): ?>
 
          <div class="search-container">
               <form method="GET" action="">
