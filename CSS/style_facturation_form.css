@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 40px auto;
+  background-color: rgb(234, 221, 221);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(128, 0, 32); 
+  margin-bottom: 20px;
+}
+
+#ajouterProduit {
+  display: block;
+  margin: 10px auto 25px;
+  background-color: rgb(128, 0, 32);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ligne-client {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.bloc-client,
+.bloc-tel,
+.bloc-nouveau-client {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"], 
+input[type="number"],
+input[list],
+select {
+  padding: 6px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 150px;
+}
+
+#ajouterClient {
+  background-color: rgb(128, 0, 32);
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  padding: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed;
+}
+
+table th {
+  background-color: rgb(128, 0, 32);
+  color: white;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid;
+  font-size: 14px;
+}
+
+.total-facture label {
+  font-weight: bold;
+  color: black;
+  width: 130px;
+  margin-bottom: 30px;
+}
+
+.creance-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.creance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+
+button[type="submit"] {
+  background-color: rgb(128, 0, 32);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  .bloc-client {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .total-facture {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .creance-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
