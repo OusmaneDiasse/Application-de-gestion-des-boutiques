@@ -13,7 +13,7 @@
  $req = $pdo->prepare('SELECT E_MAIL_CLIENT,MOT_DE_PASSE FROM client WHERE E_MAIL_CLIENT = :email LIMIT 1');
  $req->execute(['email' => $email]);
   $client = $req->fetch(PDO::FETCH_ASSOC);
-  if ($client && $client["E_MAIL_CLIENT"]) {
+  if ($email==$client["E_MAIL_CLIENT"]) {
     if (password_verify($password, $client['MOT_DE_PASSE'])) {
         echo 'Connexion réussie. Bienvenue !';
         // Enregistrer les infos dans la session
@@ -25,8 +25,8 @@
     } else {
         echo 'Mot de passe incorrect.';
     }
-    
   }
+  
   else{
     echo "L'email n'est pas enregistré. Veuillez vous inscrire.";
   }
@@ -53,6 +53,7 @@ $resultat = $req->fetch(PDO::FETCH_ASSOC);
         echo "L'email n'est pas enregistré. Veuillez vous inscrire.";
     }
  } catch (Exception $e) {
-     echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
 }
+
 ?> 

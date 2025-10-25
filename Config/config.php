@@ -26,7 +26,7 @@ global $pdo;
 // $motdepasse = "1234567890AB";
 //   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
 //  echo $hachage
-//  $motdepasse = "1234567890ABCDEFGE";
-//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
-//  echo $hachage
+//  $motdepasse = "1234567890ABCDEFGH";
+// $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+// echo $hachage
 ?>
