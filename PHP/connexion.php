@@ -6,7 +6,7 @@
  $password=$_POST['password']; //mot de passe saisi
  //vérifier si la longueur du mot de passe est supérieur ou égale à 8
  if (strlen($password) < 8) {
-    echo 'Le mot de passe doit contenir au moins 8 caractères.';
+    echo 'Le mot de passe doit contenir au moins 8 caractères.' ;
     exit();
  }
  //Vérification si l'utilisateur est dans la table utilisateur
