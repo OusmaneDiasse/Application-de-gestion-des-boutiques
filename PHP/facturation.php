@@ -2,7 +2,7 @@
 require_once '../Config/config.php';
 
 if (empty($_POST['id_produit']) || empty($_POST['quantite']) || empty($_POST['id_client'])) {
-    die("Données sont manquantes.");
+    die("Données sont manquantes!");
 }
 
     $id_client = (int)$_POST['id_client'];

@@ -1,4 +1,23 @@
 <?php
+require "../Config/config.php";
+try {
+    $recherche = $_GET['search'] ?? '';
+
+
+    if (isset($_GET['reset'])) {
+    $recherche = '';
+    }
+       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
+        WHERE ROLE_ID=2 AND NOM_UTILISATEUR like :recherche";
+         $stmt = $pdo->prepare($sql);
+         $params = [':recherche' => "%$recherche%"];
+          $stmt->execute($params);
+           $gerant = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur : " . htmlspecialchars($e->getMessage()));
+}
+?>
+<?php
  $message = "";
      if (isset($_GET['success']) && $_GET['success'] == 1) {
      $message = '<div class="alertsuccess"> Gérant supprimé avec succès</div>';
@@ -8,7 +27,10 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
 ?>
 <?php 
-    require "config.php";
+<<<<<<< HEAD
+=======
+    require "../Config/config.php";
+>>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
     if (isset($_POST['id'])) {
     $TELEPHONE_UTILISATEUR = $_POST['editPhone']; 
     $ADRESS_UTILISATEUR = $_POST['editAddress'];
@@ -18,7 +40,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
-        $req = $bdd->prepare('UPDATE utilisateur
+        $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
      NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress,
@@ -32,7 +54,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
        'nvname' =>     $NOM_UTILISATEUR
     ));
 }else{
-     $req = $bdd->prepare('UPDATE utilisateur
+     $req = $pdo->prepare('UPDATE utilisateur
      SET TELEPHONE_UTILISATEUR = :nvphone, 
       NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress
@@ -53,12 +75,12 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
   }
 ?>
 <?php
-$chat = "";
+$ghat = "";
 if (isset($_GET['successe']) && $_GET['successe'] == 1) {
-    $chat = '<div class="alertsuccess"> Gérant modifier avec succès</div>';
+    $ghat = '<div class="alertsuccess"> Gérant modifier avec succès</div>';
 }
 if (isset($_GET['errore']) && $_GET['errore'] == 1) {
-    $chat = '<div class="alerterror">❌ Erreur lors de la modification du gérant</div>';
+    $ghat = '<div class="alerterror">❌ Erreur lors de la modification du gérant</div>';
 }
 ?>
 <!DOCTYPE html>
@@ -70,17 +92,26 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
      </head>
    <body>
      <?php 
-       require "config.php";
-        $reponse = $bdd->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
+        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
         WHERE NOM_DU_ROLE="Gerant" ');
         ?>
-    <div class="All">
+    <div class="All text" >
        <?php echo $message; ?>
-       <?php echo $chat; ?>
+       <?php echo $ghat; ?>
      <div class="introduction">
-         <h2> Liste des gerants de la boutique </h2>
+         <h2> Liste des Gerants De La Boutique </h2>
          <a href="ajout_gerant.php" class="btn">Ajouter un gerant</a>
-     </div>
+
+         <div class="search-container">
+              <form method="GET" action="">
+                    <input type="text" name="search" placeholder="Rechercher un gerant..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                    <button type="submit">Rechercher</button>
+                    <button type="submit" name="reset" value="">Réinitialiser</button>
+              </form>
+           </div>
+               
+        </div>
+        <?php if($gerant): ?>
          <table>
              <tr>
                <th>Nom</th>
@@ -90,20 +121,24 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
                <th>Adresse</th>
                <th>Action</th>
              </tr>
-             <?php while($utilisateur= $reponse->fetch()) { ?>
+                  <?php foreach ($gerant as $g): ?>
              <tr>
-                <td><?php echo $utilisateur["NOM_UTILISATEUR"] ; ?></td>
-                <td><?php echo $utilisateur["E_MAIL_UTILISATEUR"] ; ?></td>
-                <td><?php echo $utilisateur["NOM_DU_ROLE"] ; ?></td>
-                <td><?php echo $utilisateur["TELEPHONE_UTILISATEUR"] ; ?></td>
-                <td><?php echo $utilisateur["ADRESS_UTILISATEUR"] ; ?></td>
+                <td><?php echo htmlspecialchars ($g['NOM_UTILISATEUR']) ?></td>
+                <td><?php echo htmlspecialchars ($g['E_MAIL_UTILISATEUR']) ?></td>
+                <td><?php echo htmlspecialchars ($g['NOM_DU_ROLE']) ?></td>
+                <td><?php echo htmlspecialchars ($g['TELEPHONE_UTILISATEUR']) ?>
+                <td><?php echo htmlspecialchars ($g['ADRESS_UTILISATEUR']) ?></td>
                 <td>
-                <a href="modifier_gerant.php?id=<?= $utilisateur['ID_UTILISATEUR'] ?>"><button>Modifier</button></a> 
-                <a href="supprimer_gerant.php?id=<?php echo $utilisateur['ID_UTILISATEUR'] ?>"><button>Supprimer</button></a>
+                <a href="modifier_gerant.php?id=<?=htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Modifier</button></a> 
+                <a href="supprimer_gerant.php?id=<?php echo htmlspecialchars ($g['ID_UTILISATEUR']) ?>"><button>Supprimer</button></a>
                 </td>
-              </tr>
-             <?php }  $reponse->closeCursor(); ?>
+                
+              </tr>        
+             <?php endforeach ?>
          </table>
-      </div>
+            <?php else: ?>
+            <p>Aucun gerant trouvé</p>
+            <?php endif; ?>
+  </div>
    </body>
 </html>

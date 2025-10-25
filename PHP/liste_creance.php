@@ -3,22 +3,21 @@ require_once "../config/config.php";
 
 try {
     $recherche = $_GET['search'] ?? '';
-    $statut = $_GET['statut'] ?? '';
+    $id_statut = $_GET['id_statut'] ?? '';
 
     if (isset($_GET['reset'])) {
     $recherche = '';
-    $statut = '';
+    $id_statut = '';
     }
 
-    $sql = "SELECT c.ID_CREANCE, c.MONTANT_DU, c.DATE_ECHEANCE, c.STATUT,
+    $sql = "SELECT c.ID_CREANCE, c.MONTANT_DU, c.DATE_ECHEANCE, c.ID_STATUT,
                    f.MONTANT_TOTAL, cli.NOM_CLIENT
             FROM creance c
-            JOIN facture f ON c.FAC_ID_FACTURE = f.ID_FACTURE
+            JOIN facture f ON c.ID_FACTURE = f.ID_FACTURE
             JOIN client cli ON f.ID_CLIENT = cli.ID_CLIENT
             WHERE cli.NOM_CLIENT LIKE :recherche";
-
     if ($statut !== '') {
-        $sql .= " AND c.STATUT = :statut";
+        $sql .= " AND c.ID_STATUT = :statut";
     }
 
     $sql .= " ORDER BY c.DATE_ECHEANCE ASC";
@@ -26,8 +25,8 @@ try {
     $stmt = $pdo->prepare($sql);
 
     $params = [':recherche' => "%$recherche%"];
-    if ($statut !== '') {
-        $params[':statut'] = $statut;
+    if ($id_statut !== '') {
+        $params[':id_statut'] = $id_statut;
     }
 
     $stmt->execute($params);
@@ -67,10 +66,10 @@ try {
       <th>Date d'échéance</th>
       <th>
         Statut <br>
-        <select name="statut" onchange="this.form.submit()">
+        <select name="id_statut" onchange="this.form.submit()">
             <option value="">Tous</option>
-            <option value="0" <?= ($statut === "0") ? 'selected' : '' ?>>En cours</option>
-            <option value="1" <?= ($statut === "1") ? 'selected' : '' ?>>Terminé</option>
+            <option value="1" <?= ($id_statut === "1") ? 'selected' : '' ?>>En cours</option>
+            <option value="2" <?= ($id_statut === "2") ? 'selected' : '' ?>>Terminé</option>
         </select>
       </th>
       <th>Action</th>
@@ -80,9 +79,9 @@ try {
         <td><?= htmlspecialchars($c['NOM_CLIENT']) ?></td>
         <td><?= htmlspecialchars($c['MONTANT_DU']) ?></td>
         <td><?= htmlspecialchars($c['DATE_ECHEANCE']) ?></td>
-        <td><?= $c['STATUT'] == 1 ? "Terminé" : "En cours"; ?></td>
+        <td><?= $c['ID_STATUT'] == 1 ? "Terminé" : "En cours"; ?></td>
         <td>
-          <?php if ($c['STATUT'] == 0): ?>
+          <?php if ($c['ID_STATUT'] == 0): ?>
             <a href="#?id=<?= $c['ID_CREANCE'] ?>">Ajouter un nouveau paiement</a>
           <?php endif; ?>
         </td>

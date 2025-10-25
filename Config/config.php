@@ -10,4 +10,23 @@ try {
 }
 
 global $pdo;
+//hachage du mot de  passe
+// $motdepasse = "12345678";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage;
+// $motdepasse = "123456789";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage
+// $motdepasse = "1234567890";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage
+// $motdepasse = "1234567890A";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage
+// $motdepasse = "1234567890AB";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage
+//  $motdepasse = "1234567890ABCDEFGE";
+//   $hachage = password_hash($motdepasse, PASSWORD_ARGON2ID);
+//  echo $hachage
 ?>

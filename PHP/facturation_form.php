@@ -36,7 +36,7 @@ $clients = $recupereClient->fetchAll(PDO::FETCH_ASSOC);
 
   <div class="bloc-tel">
    <label for="telephone">Téléphone :</label>
-   <input type="text" id="telephone" name="telephone" placeholder="numéro de téléphone" readonly>
+   <input type="text" id="telephone" name="telephone" placeholder="numéro de téléphone..." readonly>
   </div>
 
   <div class="bloc-nouveau-client">

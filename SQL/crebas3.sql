@@ -1,4 +1,3 @@
-
 /*==============================================================*/
 /* Table: CLIENT                                                */
 /*==============================================================*/
@@ -8,7 +7,9 @@ create table CLIENT
    NOM_CLIENT           varchar(255),
    E_MAIL_CLIENT        varchar(255),
    MOT_DE_PASSE         varchar(255),
-   TELEPHONE            int,
+   TELEPHONE_CLIENT     int,
+   CODE_REINIT_CLIENT   int,
+   FLAG_REINIT_CLIENT   bool,
    primary key (ID_CLIENT)
 );
 
@@ -18,10 +19,10 @@ create table CLIENT
 create table CREANCE
 (
    ID_CREANCE           int not null,
-   FAC_ID_FACTURE       int not null,
+   ID_FACTURE           int not null,
+   ID_STATUT            int not null,
    MONTANT_DU           int,
    DATE_ECHEANCE        date,
-   STATUT               bool,
    primary key (ID_CREANCE)
 );
 
@@ -76,6 +77,31 @@ create table ROLE
 );
 
 /*==============================================================*/
+/* Table: STATUT                                                */
+/*==============================================================*/
+create table STATUT
+(
+   ID_STATUT            int not null,
+   LIBELLE              varchar(255),
+   primary key (ID_STATUT)
+);
+
+/*==============================================================*/
+/* Table: STOCK                                                 */
+/*==============================================================*/
+create table STOCK
+(
+   ID_STOCK             int not null,
+   ID_PRODUIT           int not null,
+   QUANTITE_ACHETEE     int,
+   PRIX_ACHAT           int,
+   DATE_ACHAT           date,
+   FOURNISSEUR          varchar(255),
+   OBSERVATION          varchar(255),
+   primary key (ID_STOCK)
+);
+
+/*==============================================================*/
 /* Table: UTILISATEUR                                           */
 /*==============================================================*/
 create table UTILISATEUR
@@ -87,6 +113,8 @@ create table UTILISATEUR
    MOT_DE_PASSE_UTILISATEUR varchar(255),
    TELEPHONE_UTILISATEUR int,
    ADRESS_UTILISATEUR   varchar(255),
+   CODE_REINIT_UTILISATEUR int,
+   FLAG_REINIT_UTILISATEUR bool,
    primary key (ID_UTILISATEUR)
 );
 
@@ -102,8 +130,11 @@ create table VENDRE
    primary key (ID_PRODUIT, ID_FACTURE)
 );
 
-alter table CREANCE add constraint FK_GENERER foreign key (FAC_ID_FACTURE)
+alter table CREANCE add constraint FK_GENERER foreign key (ID_FACTURE)
       references FACTURE (ID_FACTURE) on delete restrict on update restrict;
+
+alter table CREANCE add constraint FK_POSSEDE foreign key (ID_STATUT)
+      references STATUT (ID_STATUT) on delete restrict on update restrict;
 
 alter table FACTURE add constraint FK_EFFECTUER foreign key (ID_CLIENT)
       references CLIENT (ID_CLIENT) on delete restrict on update restrict;
@@ -113,6 +144,9 @@ alter table FACTURE add constraint FK_ENREGISTRER foreign key (ID_UTILISATEUR)
 
 alter table PAIEMENT add constraint FK_REGLER foreign key (ID_CREANCE)
       references CREANCE (ID_CREANCE) on delete restrict on update restrict;
+
+alter table STOCK add constraint FK_APPROVISIONNER foreign key (ID_PRODUIT)
+      references PRODUIT (ID_PRODUIT) on delete restrict on update restrict;
 
 alter table UTILISATEUR add constraint FK_OCCUPER foreign key (ID_ROLE)
       references ROLE (ID_ROLE) on delete restrict on update restrict;
