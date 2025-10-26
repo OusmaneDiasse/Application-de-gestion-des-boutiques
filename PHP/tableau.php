@@ -7,27 +7,8 @@ try {
     if (isset($_GET['reset'])) {
     $recherche = '';
     }
-       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
-        WHERE ROLE_ID=2 AND NOM_UTILISATEUR like :recherche";
-         $stmt = $pdo->prepare($sql);
-         $params = [':recherche' => "%$recherche%"];
-          $stmt->execute($params);
-           $gerant = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Erreur : " . htmlspecialchars($e->getMessage()));
-}
-?>
-<?php
-require "../Config/config.php";
-try {
-    $recherche = $_GET['search'] ?? '';
-
-
-    if (isset($_GET['reset'])) {
-    $recherche = '';
-    }
-       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
-        WHERE ROLE_ID=2 AND NOM_UTILISATEUR like :recherche";
+       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE
+        WHERE role.ID_role=2 AND NOM_UTILISATEUR like :recherche";
          $stmt = $pdo->prepare($sql);
          $params = [':recherche' => "%$recherche%"];
           $stmt->execute($params);
@@ -46,8 +27,6 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
 ?>
 <?php 
-
-    require "../Config/config.php";
     if (isset($_POST['id'])) {
     $TELEPHONE_UTILISATEUR = $_POST['editPhone']; 
     $ADRESS_UTILISATEUR = $_POST['editAddress'];
@@ -56,10 +35,6 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $hashedPassword = password_hash($MOT_DE_PASSE_UTILISATEUR, PASSWORD_ARGON2I);
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
-    if (strlen($MOT_DE_PASSE_UTILISATEUR) < 8) {
-    echo 'Le mot de passe doit contenir au moins 8 caractères.';
-    exit();
-    }
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
         $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
@@ -67,7 +42,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
      ADRESS_UTILISATEUR   = :nvaddress,
     MOT_DE_PASSE_UTILISATEUR = :nvpassword 
     WHERE ID_UTILISATEUR = :id'); 
-        $successe= $req->execute(array(
+        $success= $req->execute(array(
        'nvphone' => $TELEPHONE_UTILISATEUR,
        'nvaddress' => $ADRESS_UTILISATEUR,
        'nvpassword' =>  $hashedPassword ,
@@ -113,28 +88,15 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
      </head>
    <body>
      <?php 
-        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
+        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE
         WHERE NOM_DU_ROLE="Gerant" ');
         ?>
-    <div class="All text" >
-    <div class="All text" >
+    <div class="All">
        <?php echo $message; ?>
        <?php echo $ghat; ?>
      <div class="introduction">
          <h2> Liste des Gerants De La Boutique </h2>
-         <h2> Liste des Gerants De La Boutique </h2>
          <a href="ajout_gerant.php" class="btn">Ajouter un gerant</a>
-
-         <div class="search-container">
-              <form method="GET" action="">
-                    <input type="text" name="search" placeholder="Rechercher un gerant..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
-                    <button type="submit">Rechercher</button>
-                    <button type="submit" name="reset" value="">Réinitialiser</button>
-              </form>
-           </div>
-               
-        </div>
-        <?php if($gerant): ?>
 
          <div class="search-container">
               <form method="GET" action="">
@@ -171,7 +133,7 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
              <?php endforeach ?>
          </table>
             <?php else: ?>
-            <p>Aucun gerant trouvé</p>
+            <p>Aucun produit trouvé</p>
             <?php endif; ?>
   </div>
    </body>
