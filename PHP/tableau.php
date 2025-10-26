@@ -27,6 +27,10 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
 ?>
 <?php 
+<<<<<<< HEAD
+=======
+    require "../Config/config.php";
+>>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
     if (isset($_POST['id'])) {
     $TELEPHONE_UTILISATEUR = $_POST['editPhone']; 
     $ADRESS_UTILISATEUR = $_POST['editAddress'];

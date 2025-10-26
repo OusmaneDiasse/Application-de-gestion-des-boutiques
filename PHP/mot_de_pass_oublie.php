@@ -80,6 +80,7 @@ if (isset($_POST['envoyer'])) {
         <form method="POST">
             <label>Entrez votre e-mail </label>
             <input type="email" name="email" placeholder="exemple@gmail.com" required>
+            
             <div class="button-group">
             <button type="submit" name="envoyer">Envoyer le code</button>
             <button type="button" onclick="window.location.href='../index.html'">Annuler</button>

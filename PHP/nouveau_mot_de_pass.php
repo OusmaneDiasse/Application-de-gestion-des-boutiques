@@ -57,6 +57,7 @@ if (isset($_POST['changer'])) {
 
             <label>Confirmer le mot de passe</label>
             <input type="password" name="confirmer" required><br><br>
+            
             <div class="button-group">
             <button type="submit" name="changer">Changer le mot de passe</button>
             <button type="button" onclick="window.location.href='verification_du_code.php'">Annuler</button>

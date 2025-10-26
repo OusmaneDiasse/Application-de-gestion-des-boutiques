@@ -1,30 +1,4 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     14/10/2025 15:49:54                          */
-/*==============================================================*/
-
-
-drop table if exists CLIENT;
-
-drop table if exists CREANCE;
-
-drop table if exists FACTURE;
-
-drop table if exists PAIEMENT;
-
-drop table if exists PRODUIT;
-
-drop table if exists ROLE;
-
-drop table if exists STATUT;
-
-drop table if exists STOCK;
-
-drop table if exists UTILISATEUR;
-
-drop table if exists VENDRE;
-
-/*==============================================================*/
 /* Table: CLIENT                                                */
 /*==============================================================*/
 create table CLIENT
