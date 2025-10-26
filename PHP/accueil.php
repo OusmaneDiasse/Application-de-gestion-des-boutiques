@@ -68,7 +68,7 @@
         </tr>
         <?php
         // Requête pour récupérer les créances échues et non soldées    
-        $req = $pdo->query('SELECT client.NOM_CLIENT, creance.MONTANT_DU, creance.DATE_ECHEANCE, creance.ID_STATUT FROM creance JOIN facture ON creance.ID_FACTURE = facture.ID_FACTURE
+        $req = $pdo->query('SELECT client.NOM_CLIENT, creance.MONTANT_DU, creance.DATE_ECHEANCE, creance.ID_STATUT FROM creance JOIN facture ON creance.FAC_ID_FACTURE = facture.ID_FACTURE
 JOIN client ON facture.ID_CLIENT = client.ID_CLIENT WHERE creance.ID_STATUT = 1 AND creance.DATE_ECHEANCE < CURDATE()');
         $creances = $req->fetchAll(PDO::FETCH_ASSOC); // Récupérer tous les résultats
         if (!empty($creances)) {
@@ -146,7 +146,7 @@ JOIN client ON facture.ID_CLIENT = client.ID_CLIENT WHERE creance.ID_STATUT = 1 
     </tr>
     <?php
     // Requête pour récupérer les 5 ventes plus récentes    
-    $req = $pdo->query('SELECT HEURE_VENTE AS heure_vente, SUM(produit.PRIX * vendre.QUANTITE_VENDUE) AS MONTANT_TOTAL, SUM(vendre.QUANTITE_VENDUE) AS NOMBRE_ARTICLES FROM vendre JOIN produit ON vendre.ID_PRODUIT = produit.ID_PRODUIT JOIN facture ON vendre.ID_FACTURE = facture.ID_FACTURE
+    $req = $pdo->query('SELECT HEUR_VENTE AS heure_vente, SUM(produit.PRIX * vendre.QUANTITE_VENDUE) AS MONTANT_TOTAL, SUM(vendre.QUANTITE_VENDUE) AS NOMBRE_ARTICLES FROM vendre JOIN produit ON vendre.ID_PRODUIT = produit.ID_PRODUIT JOIN facture ON vendre.ID_FACTURE = facture.ID_FACTURE
 GROUP BY facture.ID_FACTURE ORDER BY vendre.QUANTITE_VENDUE DESC LIMIT 5');
     $ventes_recentes = $req->fetchAll(PDO::FETCH_ASSOC); // Récupérer tous les résultats
     if (!empty($ventes_recentes)) {

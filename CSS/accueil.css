@@ -18,15 +18,16 @@ body{
    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
     background-color: rgb(128, 0, 32);
     color: white;
-    width: 1150px;
+    width: 950px;
     height: 90px;
+    margin-left: 200px;
 }
 .informations{
   display: flex;
     flex-direction: row;
     gap: 20px;
     padding-left: 500px;
-     margin-right: 43em;
+     margin-right: 30em;
      margin-left: 190px;
 }
 .affaires,
@@ -43,7 +44,7 @@ body{
     background-color: rgb(128, 0, 32);
     color: white;
    padding-top: 10px;
-    width: 15em;
+    width: 10em;
     height: 80px;
 
 }
@@ -51,21 +52,21 @@ body{
     background-color: rgb(40, 167, 69);
     color: white;
     padding-top: 10px;
-    width: 15em;
+    width: 10em;
     height: 80px;
 }
 .creances{
     background-color: rgb(255, 193, 7);
     color: black;
     padding-top: 10px;
-    width: 15em;
+    width: 10em;
     height: 80px;
 }
 .produits{
     background-color: #dc3545;  
     color: white;
     padding-top: 10px;
-    width: 15em;
+    width: 10em;
     height: 80px;
 }
 .buttons{
@@ -124,22 +125,22 @@ caption{
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 210px;
     margin-right: 10px;
     
 }
 .table{
-    width: 850px;
+    width: 750px;
     background-color: white;
 }
 .tableau{
       background-color: white;
-      width: 600px;
+      width: 470px;
        margin-right: 15px;
 }
 .block{
 background-color: white;
-      width: 600px;
+      width: 470px;
       
 }
 a{
@@ -148,7 +149,7 @@ a{
     
 }
 .lien{
-    width: 13em;
+    width: 10em;
      border-radius: 20px;
      box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
      background-color: rgb(128, 0, 32);
@@ -162,8 +163,9 @@ a{
     display: flex;
     align-items: flex-start; /* permet aux éléments de commencer en haut */
     align-content: flex-start;
-    margin-left: 10px;
+    margin-left: 20px;
     gap: 10px;
+    margin-left: 200px;
 }
 .valeur,
 .total,
@@ -177,15 +179,15 @@ a{
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 210px;
     margin-right: 10px;
 }
 .recent{
     background-color: white;
-      width: 600px;
+      width: 470px;
        margin-right: 15px;
 }
 .achete{
       background-color: white;
-      width: 600px;
+      width: 470px;
 }
