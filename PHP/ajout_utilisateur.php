@@ -1,7 +1,7 @@
 <?php
 require_once '../Config/config.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" ) {
     $nom = $_POST['nom_et_prenom'];
     $email = $_POST['email'];
     $password = $_POST['mot_de_passe'];

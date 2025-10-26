@@ -1,6 +1,7 @@
  body{
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
  form{
    display: flex;
@@ -11,7 +12,7 @@
    width: 30%;
    padding: 20px;
    height: 400px;
-   background-color: white ;
+   background-color: white;
 }
 h1,p,label{
    padding-left: 10px ;
@@ -24,6 +25,7 @@ p{
    border: 10px solid rgb(128, 0, 32);
    border-radius: 10px;
    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+   height: 400px;
    height: 400px;
    padding: 20px;
    background-color: rgb(128, 0, 32);

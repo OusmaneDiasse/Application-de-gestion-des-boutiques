@@ -14,7 +14,7 @@
           $utilisateur = $reponse->fetch();
         ?>
     <div class="container">
-       <h1>Modifier Profil</h1>
+       <h1>Modifier gerant</h1>
        <form action="tableau.php" id="profileEdit" method="post">
           <input type="hidden" name="id" value="<?php echo $utilisateur['ID_UTILISATEUR']; ?>">
           <label>Email / Login </label>
