@@ -46,10 +46,8 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
 ?>
 <?php 
-<<<<<<< HEAD
-=======
+
     require "../Config/config.php";
->>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
     if (isset($_POST['id'])) {
     $TELEPHONE_UTILISATEUR = $_POST['editPhone']; 
     $ADRESS_UTILISATEUR = $_POST['editAddress'];
@@ -64,7 +62,6 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     }
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
         $req = $pdo->prepare('UPDATE utilisateur
-        $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
      NOM_UTILISATEUR = :nvname,
      ADRESS_UTILISATEUR   = :nvaddress,
@@ -78,7 +75,6 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
        'nvname' =>     $NOM_UTILISATEUR
     ));
 }else{
-     $req = $pdo->prepare('UPDATE utilisateur
      $req = $pdo->prepare('UPDATE utilisateur
      SET TELEPHONE_UTILISATEUR = :nvphone, 
       NOM_UTILISATEUR = :nvname,
@@ -117,7 +113,6 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
      </head>
    <body>
      <?php 
-        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
         $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
         WHERE NOM_DU_ROLE="Gerant" ');
         ?>

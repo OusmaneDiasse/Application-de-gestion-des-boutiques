@@ -9,12 +9,12 @@
       <?php
          require "../Config/config.php";
           $ID_UTILISATEUR=$_GET['id'];
-          $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=:id');
+          $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=:id');
           $reponse->execute(array('id' =>$ID_UTILISATEUR));
           $utilisateur = $reponse->fetch();
         ?>
     <div class="container">
-       <h1>Modifier Profil</h1>
+       <h1>Modifier gerant</h1>
        <form action="tableau.php" id="profileEdit" method="post">
           <input type="hidden" name="id" value="<?php echo $utilisateur['ID_UTILISATEUR']; ?>">
           <label>Email / Login </label>
