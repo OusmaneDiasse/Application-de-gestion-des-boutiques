@@ -1,6 +1,5 @@
 <?php
   session_start();
-  session_start();
     require_once '../Config/config.php';
  try{
  $email=$_POST['email']; //email saisi
