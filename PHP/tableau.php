@@ -7,8 +7,8 @@ try {
     if (isset($_GET['reset'])) {
     $recherche = '';
     }
-       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
-        WHERE ROLE_ID=2 AND NOM_UTILISATEUR like :recherche";
+       $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE
+        WHERE role.ID_ROLE=2 AND NOM_UTILISATEUR like :recherche";
          $stmt = $pdo->prepare($sql);
          $params = [':recherche' => "%$recherche%"];
           $stmt->execute($params);
@@ -35,6 +35,10 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
     $hashedPassword = password_hash($MOT_DE_PASSE_UTILISATEUR, PASSWORD_ARGON2I);
     $E_MAIL_UTILISATEUR = $_POST['editEmail'];
     $ID_UTILISATEUR = $_POST['id'];
+    if (strlen($MOT_DE_PASSE_UTILISATEUR) < 8) {
+    echo 'Le mot de passe doit contenir au moins 8 caractères.';
+    exit();
+    }
    if (!empty($MOT_DE_PASSE_UTILISATEUR)){
         $req = $pdo->prepare('UPDATE utilisateur
        SET TELEPHONE_UTILISATEUR = :nvphone, 
@@ -42,7 +46,7 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
      ADRESS_UTILISATEUR   = :nvaddress,
     MOT_DE_PASSE_UTILISATEUR = :nvpassword 
     WHERE ID_UTILISATEUR = :id'); 
-        $success= $req->execute(array(
+        $successe= $req->execute(array(
        'nvphone' => $TELEPHONE_UTILISATEUR,
        'nvaddress' => $ADRESS_UTILISATEUR,
        'nvpassword' =>  $hashedPassword ,
@@ -87,16 +91,12 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
          <title>Les gerants de la boutique</title>
      </head>
    <body>
-     <?php 
-        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID
-        WHERE NOM_DU_ROLE="Gerant" ');
-        ?>
     <div class="All text" >
        <?php echo $message; ?>
        <?php echo $ghat; ?>
      <div class="introduction">
          <h2> Liste des Gerants De La Boutique </h2>
-         <a href="ajout_gerant.php" class="btn">Ajouter un gerant</a>
+         <a href="../HTML/ajout_utilisateur.html" class="btn">Ajouter un gerant</a>
 
          <div class="search-container">
               <form method="GET" action="">
