@@ -133,7 +133,7 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
              <?php endforeach ?>
          </table>
             <?php else: ?>
-            <p>Aucun produit trouvé</p>
+            <p>Aucun gerant trouvé</p>
             <?php endif; ?>
   </div>
    </body>
