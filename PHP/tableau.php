@@ -96,7 +96,7 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
        <?php echo $ghat; ?>
      <div class="introduction">
          <h2> Liste des Gerants De La Boutique </h2>
-         <a href="ajout_gerant.php" class="btn">Ajouter un gerant</a>
+         <a href="ajout_utilisateur.php" class="btn">Ajouter un gerant</a>
 
          <div class="search-container">
               <form method="GET" action="">
