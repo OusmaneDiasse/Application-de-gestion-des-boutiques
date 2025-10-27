@@ -19,7 +19,7 @@ if (!$facture) {
 
 $montant_paye = $_GET['montant_paye'] ?? 0;
 $montant_du = $facture['MONTANT_TOTAL'] - $montant_paye;
-
+$id_statut = 1;
 // Gestion POST ajout
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':id_facture'=> $id_facture
     ];
 
-    $stmt = $pdo->prepare("INSERT INTO creance (MONTANT_DU, DATE_ECHEANCE, ID_STATUT, FAC_ID_FACTURE) 
+    $stmt = $pdo->prepare("INSERT INTO creance (MONTANT_DU, DATE_ECHEANCE, ID_STATUT, ID_FACTURE) 
                                  VALUES (:montant, :date, :id_statut, :id_facture)");
     $stmt->execute($data);
 

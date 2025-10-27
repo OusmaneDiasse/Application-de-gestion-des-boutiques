@@ -16,7 +16,7 @@ try {
             JOIN facture f ON c.ID_FACTURE = f.ID_FACTURE
             JOIN client cli ON f.ID_CLIENT = cli.ID_CLIENT
             WHERE cli.NOM_CLIENT LIKE :recherche";
-    if ($statut !== '') {
+    if ($id_statut !== '') {
         $sql .= " AND c.ID_STATUT = :statut";
     }
 
@@ -26,7 +26,7 @@ try {
 
     $params = [':recherche' => "%$recherche%"];
     if ($id_statut !== '') {
-        $params[':id_statut'] = $id_statut;
+        $params[':statut'] = $id_statut;
     }
 
     $stmt->execute($params);
@@ -79,9 +79,9 @@ try {
         <td><?= htmlspecialchars($c['NOM_CLIENT']) ?></td>
         <td><?= htmlspecialchars($c['MONTANT_DU']) ?></td>
         <td><?= htmlspecialchars($c['DATE_ECHEANCE']) ?></td>
-        <td><?= $c['ID_STATUT'] == 1 ? "Terminé" : "En cours"; ?></td>
+        <td><?= $c['ID_STATUT'] == 1 ? "En cours" : "Terminé"; ?></td>
         <td>
-          <?php if ($c['ID_STATUT'] == 0): ?>
+          <?php if ($c['ID_STATUT'] == 1): ?>
             <a href="#?id=<?= $c['ID_CREANCE'] ?>">Ajouter un nouveau paiement</a>
           <?php endif; ?>
         </td>
