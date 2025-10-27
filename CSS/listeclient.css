@@ -72,4 +72,14 @@ button{
 }
 .client{
    margin-left: 390px;
+   border-radius: 10px;
+    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+   padding-bottom: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    width: 150px;
 }

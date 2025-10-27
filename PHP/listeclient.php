@@ -33,15 +33,14 @@ if ($recherche !== '') {
    <div class="tableau" >
     <div class="block">
     <h1 class="caption">Liste des clients de la boutique</h1>
-    <button class="client">Ajouter un client</button> 
+    <a href="Formulaire_client.php" class="client">Ajouter un client</a>
    <form method="GET" action="">
           <input type="text" name="search" placeholder="Rechercher un client..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
           <button type="submit" class="recherche">Rechercher</button>
           <button type="submit" name="reset" value="" class="réinitialiser">Réinitialiser</button>
       </form>
       </div>
-   <table class="BLOCK">
-
+   <table class="BLOCK"> 
         <tr>
             <th>ID</th>
             <th>Nom</th>
