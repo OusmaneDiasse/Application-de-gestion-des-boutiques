@@ -1,12 +1,27 @@
 <?php
 //Connexion à la base de données
  require_once '../Config/config.php';
-// Récupérer l'ID de la créance depuis l'URL
-    if (!isset($_GET['id_creance']) || !isset($_GET['id_client'])) {
-        die("ID de créance ou ID de client manquant.");
-    }
-    $id = (int)$_GET['id_creance'];
-    $id_client = (int)$_GET['id_client'];
+// Récupérer l'ID de la créance et l'ID du client a l'aide d"une session 
+session_start();
+// Vérifier que le client est connecté
+if (!isset($_SESSION['ID_CLIENT'])) {
+    die("Client non connecté.");
+}
+
+$id_client = $_SESSION['ID_CLIENT'];
+
+// Vérifier si on a reçu l'ID de la créance via POST
+if (!isset($_POST['id_creance'])) {
+    die("Aucune créance sélectionnée.");
+}
+
+// Stocker dans la session
+$_SESSION['id_creance'] = $_POST['id_creance'];
+$id = $_SESSION['id_creance'];
+
+// Maintenant tu peux faire toutes tes requêtes avec $id et $id_client
+
+// Récupérer les détails des paiements pour la créance donnée
     try {
         // Récupérer les détails des paiements pour la créance donnée
         $stmt = $pdo->prepare("SELECT paiement.*, creance.ID_CREANCE FROM paiement JOIN creance ON paiement.ID_CREANCE = creance.ID_CREANCE WHERE creance.ID_CREANCE = :id AND creance.FAC_ID_FACTURE IN (SELECT ID_FACTURE FROM facture WHERE ID_CLIENT = :id_client)");
@@ -45,8 +60,6 @@
 <table>
     <caption> Paiements éffectués</caption>
     <tr>
-        <th>ID Paiement</th>
-        <th>ID Créance</th>
         <th>Montant Payé</th>
         <th>Date de Paiement</th>
         <th>Méthode de Paiement</th>
@@ -54,8 +67,6 @@
  <?php if (!empty($paiements)){
      foreach ($paiements as $paiement){
         echo "<tr>";
-        echo "<td>" . htmlspecialchars($paiement['ID_PAIEMENT']) . "</td>";
-        echo "<td>" . htmlspecialchars($paiement['ID_CREANCE']) . "</td>";  
         echo "<td>" . htmlspecialchars($paiement['MONTANT_PAYE']) . "</td>";
         echo "<td>" . htmlspecialchars($paiement['DATE_PAIEMENT']) . "</td>";
         echo "<td>" . htmlspecialchars($paiement['MODE_PAIEMENT']) . "</td>";
@@ -63,7 +74,7 @@
     } 
 
 }else {
-        echo "<tr><td colspan='5'>Aucun paiement trouvé pour cette créance.</td></tr>";
+        echo "<tr><td colspan='3'>Aucun paiement trouvé pour cette créance.</td></tr>";
     }
 
     ?>
