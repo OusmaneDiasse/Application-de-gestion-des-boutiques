@@ -1,7 +1,7 @@
 <?php
 // Connexion à la base de données
 require_once '../Config/config.php';
-// Récupérer le nom du client et son ID
+// Récupérer l'email du client à partir de la session
 session_start();
 $email =$_SESSION['email'];
 // Récupérer l'ID_CLIENT à partir de l'email
@@ -11,6 +11,8 @@ try {
     $resultats = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($resultats) {
         $id_client = $resultats['ID_CLIENT'];
+        // Stocker l'ID_CLIENT dans la session pour une utilisation ultérieure
+        $_SESSION['ID_CLIENT'] = $id_client;
     } else {
         die("Client non trouvé.");
     }
@@ -67,7 +69,10 @@ try {
                                     echo "Soldée";
                                 }
                                 ?></td>
-<td><a href="detail.php?id_client=<?php echo $resultats['ID_CLIENT']; ?>&id_creance=<?php echo $c['ID_CREANCE']; ?>">Voir les détails</a></td>
+<td><form method="POST" action="detail.php">
+            <input type="hidden" name="id_creance" value="<?= $c['ID_CREANCE']; ?>">
+            <button type="submit">Voir les détails</button>
+        </form></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
