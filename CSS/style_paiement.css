@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body > p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 350px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #0c7802;               
+    background-color: white;    
+    border: 1px solid;
+    white-space: pre-line;        
+    line-height: 1.5;             
+}
+
+.form-container {
+    background-color: rgb(128,0,32);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 350px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.button-enregistrer {
+    background-color: white; 
+    color: black;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: auto;
+    height: 40px;
+    width: 50%;
+}
