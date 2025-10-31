@@ -1,0 +1,92 @@
+body {
+  font-family: 'Courier New', monospace;
+  background-color: white;
+}
+
+.ticket-container {
+  width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px;
+  border-radius: 4px;
+}
+
+.ticket-header {
+  text-align: center;
+  border-bottom: 1px dashed rgb(128,0,32);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.ticket-header h2 {
+  color: rgb(128,0,32);
+  font-size: 16px;
+}
+
+.ticket-header p {
+  margin: 2px 0;
+  font-size: 11px;
+}
+
+.ticket-details {
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.ticket-details p {
+  margin: 2px 0;
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.ticket-table th,
+.ticket-table td {
+  padding: 5px;
+}
+
+.ticket-table th {
+  border-bottom: 1px dashed rgb(128,0,32);
+  text-align: left;
+}
+
+.ticket-table td:last-child {
+  text-align: right;
+}
+
+.ticket-total {
+  border-top: 1px dashed rgb(128,0,32);
+  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+
+.ticket-footer {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 10px;
+  font-style: italic;
+  color: rgb(125, 116, 116);
+}
+
+@media print {
+  body {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ticket-container {
+    width: 80mm;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 5px;
+  }
+}
