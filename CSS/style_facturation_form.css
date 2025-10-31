@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  max-width: 1300px;
+  width: 100%;
   margin: 40px auto;
   background-color: rgb(234, 221, 221);
   padding: 20px;
@@ -28,21 +28,43 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  transition: transform 0.2s ease;
 }
 
 .ligne-client {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 30px;
   margin-bottom: 30px;
-  gap: 20px;
 }
 
-.bloc-client,
-.bloc-tel,
-.bloc-nouveau-client {
+.bloc-client {
   display: flex;
   flex-direction: column;
+}
+
+.bloc-tel {
+  display: flex;
+  flex-direction: column;
+  margin-top: -10px; 
+}
+
+.bloc-tel label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.bloc-nouveau-client {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.bloc-nouveau-client label {
+  font-weight: bold;
 }
 
 input[type="text"], 
@@ -53,7 +75,7 @@ select {
   border: 1px solid;
   border-radius: 6px;
   font-size: 14px;
-  width: 150px;
+  width: 180px;
 }
 
 #ajouterClient {
@@ -63,7 +85,8 @@ select {
   border-radius: 6px;
   border: none;
   font-size: 14px;
-  padding: 6px;
+  padding: 6px 10px;
+  text-decoration: none;
 }
 
 table {
@@ -85,11 +108,15 @@ table th, table td {
   font-size: 14px;
 }
 
+.total-facture {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .total-facture label {
   font-weight: bold;
   color: black;
-  width: 130px;
-  margin-bottom: 30px;
+  margin-right: 10px;
 }
 
 .creance-container {
@@ -106,8 +133,7 @@ table th, table td {
   font-weight: bold;
 }
 
-
-button[type="submit"] {
+.enregistrer-container button {
   background-color: rgb(128, 0, 32);
   color: white;
   border: none;
@@ -115,20 +141,22 @@ button[type="submit"] {
   padding: 10px;
   font-weight: bold;
   cursor: pointer;
-  width: 100px;
+  width: 120px;
 }
 
 @media (max-width: 768px) {
-  .bloc-client {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .total-facture {
+  .ligne-client {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .creance-container {
     flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
+  }
+
+  input[type="text"], input[list], input[type="number"] {
+    width: 100%;
   }
 }

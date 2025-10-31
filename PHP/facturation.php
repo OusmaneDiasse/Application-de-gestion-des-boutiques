@@ -1,22 +1,28 @@
 <?php
+session_start(); // Ajouté pour gérer les sessions
 require_once '../Config/config.php';
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION['id_utilisateur'])) {
+    die("Vous devez être connecté pour effectuer cette action.");
+}
 
 if (empty($_POST['id_produit']) || empty($_POST['quantite']) || empty($_POST['id_client'])) {
     die("Données sont manquantes.");
 }
 
-    $id_client = (int)$_POST['id_client'];
-    $id_produits = $_POST['id_produit'];
-    $quantites = $_POST['quantite'];
-    $prix_unitaires = $_POST['prix_unitaire'];
-    $totaux = $_POST['montant_total'];
-    $date_vente = date("Y-m-d");
-    $heure_vente = date("H:i:s");
+$id_client = (int)$_POST['id_client'];
+$id_produits = $_POST['id_produit'];
+$quantites = $_POST['quantite'];
+$prix_unitaires = $_POST['prix_unitaire'];
+$totaux = $_POST['montant_total'];
+$date_vente = date("Y-m-d");
+$heure_vente = date("H:i:s");
 
-    $total_facture = 0;
-    foreach ($totaux as $t) {
+$total_facture = 0;
+foreach ($totaux as $t) {
     $total_facture += (float)$t;
-    }
+}
 
 $creance = isset($_POST['creance']);
 $montant_paye = isset($_POST['montant_paye']) ? (float)$_POST['montant_paye'] : 0;
@@ -25,11 +31,12 @@ if ($creance && $montant_paye >= $total_facture) {
     die("Le montant payé doit être inférieur au total de la facture pour une créance.");
 }
 
+$id_utilisateur = $_SESSION['id_utilisateur'];
 $facture = $pdo->prepare("
     INSERT INTO facture (ID_CLIENT, ID_UTILISATEUR, TYPE_DE_PAYMENT, MONTANT_TOTAL)
     VALUES (?, ?, ?, ?)
 ");
-$facture->execute([$id_client, 1, $creance ? "Crédit" : "Espèces", $total_facture]);
+$facture->execute([$id_client, $id_utilisateur, $creance ? "Crédit" : "Espèces", $total_facture]);
 $id_facture = $pdo->lastInsertId();
 
 for ($i = 0; $i < count($id_produits); $i++) {
@@ -57,10 +64,18 @@ for ($i = 0; $i < count($id_produits); $i++) {
     $update_stock->execute([$quantite, $id_produit]);
 }
 
-if ($creance && $montant_paye > 0) {
-    header("Location: ajout_creance.php?id_facture=$id_facture&montant_paye=$montant_paye");
+if ($creance) {
+    echo "<script>
+        // Ouvre le ticket dans un nouvel onglet
+        window.open('ticket_caisse.php?id_facture=$id_facture', '_blank');
+        
+        // Redirige ensuite la fenêtre principale vers la page d’ajout de créance
+        window.location.href = 'ajout_creance.php?id_facture=$id_facture&montant_paye=$montant_paye';
+    </script>";
 } else {
-    header("Location: facture.php?id_facture=$id_facture");
+    echo "<script>
+        window.location.href = 'ticket_caisse.php?id_facture=$id_facture';
+    </script>";
 }
 exit;
 ?>
