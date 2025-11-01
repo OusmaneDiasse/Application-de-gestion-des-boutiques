@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require_once '../Config/config.php';
 
 $recupereProduit = $pdo->query("SELECT * FROM produit");
@@ -16,7 +17,9 @@ $clients = $recupereClient->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="../CSS/style_facturation_form.css">
 </head>
 <body>
-  
+   <div class="incluU">
+      <?php include('menugerant.php'); ?>
+    </div>
   <div class="container">
     <form method="POST" action="../PHP/facturation.php">
       <h1>Facturation</h1>

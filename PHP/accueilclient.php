@@ -1,8 +1,8 @@
 <?php
+require_once 'session.php';
 // Connexion à la base de données
 require_once '../Config/config.php';
-// Récupérer l'email du client à partir de la session
-session_start();
+// Récupérer l'email du client à partir de la session 
 $email =$_SESSION['email'];
 // Récupérer l'ID_CLIENT à partir de l'email
 try {
@@ -22,7 +22,7 @@ try {
 // Récupérer les créances du client
 try {
     // Requête pour récupérer les 5 créances du client les plus récentes
-    $stmt = $pdo->prepare(" SELECT * FROM creance JOIN facture ON creance.FAC_ID_FACTURE = facture.ID_FACTURE WHERE facture.ID_CLIENT = ? ORDER BY creance.DATE_ECHEANCE DESC LIMIT 5");
+    $stmt = $pdo->prepare(" SELECT * FROM creance JOIN facture ON creance.ID_FACTURE = facture.ID_FACTURE WHERE facture.ID_CLIENT = ? ORDER BY creance.DATE_ECHEANCE DESC LIMIT 5");
     $stmt->execute([ $id_client]);
     $creances = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -38,6 +38,11 @@ try {
     <link rel="stylesheet" href="../CSS/accueilclient.css">
 </head>
 <body>
+    <div class="all">
+    <div class="incluU">
+      <?php include('menu_client.php'); ?>
+    </div>
+    <div class="mouv">
     <div class="BLOCK">
         <div class="bienvenue">
             <h2>Bienvenue, <span><?php echo htmlspecialchars($resultats['NOM_CLIENT']); ?></span>👋</h2>
@@ -90,7 +95,7 @@ try {
         <div class="montant">
       <?php
         try {
-            $stmt = $pdo->prepare("SELECT SUM(MONTANT_DU) AS total_creances FROM creance JOIN facture ON creance.FAC_ID_FACTURE = facture.ID_FACTURE WHERE facture.ID_CLIENT = ? AND creance.ID_STATUT = 1");
+            $stmt = $pdo->prepare("SELECT SUM(MONTANT_DU) AS total_creances FROM creance JOIN facture ON creance.ID_FACTURE = facture.ID_FACTURE WHERE facture.ID_CLIENT = ? AND creance.ID_STATUT = 1");
             $stmt->execute([$id_client]);
             $total = $stmt->fetch(PDO::FETCH_ASSOC);
             $total_creances = $total['total_creances'] ?? 0;
@@ -129,7 +134,7 @@ try {
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='4'>Aucun achat trouvé.</td></tr>";
+            echo "<tr><td colspan='6'>Aucun achat trouvé.</td></tr>";
         }
     } catch (PDOException $e) {
         die("Erreur SQL : " . $e->getMessage());
@@ -138,6 +143,7 @@ try {
 </table>
 </div>
 </div>
-
+</div>
+</div>
 </body>
 </html>

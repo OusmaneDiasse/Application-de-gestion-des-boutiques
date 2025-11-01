@@ -1,4 +1,7 @@
 <?php
+//Bloque le retour en arriere apres la deconnexion
+require_once 'session.php';
+//Connexion à la base de données
 require_once "../Config/config.php";
 
 try {
@@ -37,7 +40,10 @@ try {
   <title>liste Produits</title>
 </head>
 <body>
- <div>
+      <div class="inclu">
+        <?php include('menugerant.php');?>
+      </div>
+ <div class="all">
     <div class="form-container">
   <h1>Liste Des Produits De La Boutique</h1>
   <div class="button-group"><a href="ajout_produit.php"><button>Ajouter un produit</button></a></div>
@@ -70,9 +76,9 @@ try {
           <td><?= htmlspecialchars($p['DATE_DE_FABRICATION']) ?></td>
           <td><?= htmlspecialchars($p['DATE_DE_PEREMPTION']) ?></td>
           <td>
-            <a href="ajout_produit.php?id=<?= $p['ID_PRODUIT'] ?>">Modifier</a> |
+            <a href="ajout_produit.php?id=<?= $p['ID_PRODUIT'] ?>">Modifier</a> 
             <a href="?action=supprimer&id=<?= $p['ID_PRODUIT'] ?>"
-               onclick="return confirm('Voulez-vous supprimer ce produit ?');">Supprimer</a> |<br>
+               onclick="return confirm('Voulez-vous supprimer ce produit ?');">Supprimer</a> <br><br>
                <a href="stock.php?id_produit=<?= urlencode($p['ID_PRODUIT']) ?>" class="btn-appro">Approvisionner</a>
           </td>
         </tr>
@@ -82,5 +88,30 @@ try {
     <p>Aucun produit trouvé.</p>
   <?php endif; ?>
 </div>
-</body>
+<script>
+    // Sélectionne le message
+    const message = document.querySelector('.message');
+    const sms = document.querySelector('.error');
+
+    if (message) {
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            message.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                message.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }else{
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            sms.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                sms.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }
+</script>
+   </body>
 </html>

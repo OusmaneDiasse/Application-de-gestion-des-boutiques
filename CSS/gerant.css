@@ -1,20 +1,7 @@
 body{ 
  font-family: Arial, sans-serif;
  background-color: white;
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100vh;  
- align-items: center;
-}
-.container {
-  width: 60%;
-  padding: 20px;
-  padding-right: 10px;
-  padding-bottom: 50px;
-  border-radius: 20px;
-  background-color: white;
- color: white;
+ min-height: 900px;
 }
 .search-container {
   margin-top: 2px;
@@ -35,7 +22,7 @@ body{
     box-shadow: 0 2px 5px gray;
 }
 .search-container button{ 
-    padding: 5px;
+    padding: 8px;
     padding-top: 8px;
     width: 100px;
     border: none;
@@ -57,11 +44,11 @@ body{
       background-color: rgb(128,0,32);
       color: #fff;
       border-radius:4px;
-      padding: 40px;
+      padding: 62px;
       padding-top: 10px;
 }
 table{
-      width: 103%;
+      width: 107.5%;
       margin: 0 auto;
       border-collapse: collapse;
       background-color:white;
@@ -92,10 +79,11 @@ h2{
   margin-top: 1px;
   margin-bottom: 1px;
   background:white;
-  padding: 6px;
+  padding: 10px;
   border-radius: 5px;
   color: black;
   font-size: 14px;
+  text-decoration: none;
 }
 button{
  width: 65px;
@@ -118,16 +106,29 @@ button{
 }
 .alertsuccess {
     background-color: #c9e886;
+    width: 100%;
     color: rgb(10, 201, 7);
     border: 1px solid #c3e6cb;
       text-align: center;
-      padding: 3px;
+      border-radius: 6px;
+      margin-top: 50px;
       justify-content: center;
-      margin-left: 15px;
+      margin-left: 5px;
 }
 
 .alerterror {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+    text-align: center;
+    justify-content: center;
+    margin-left: 73px;
+     padding: 3px;
+     border-radius: 6px;
+      margin-top: 50px;
+      margin-left: 5px;
 }
+.All{
+  margin-left: 330px;
+  margin-top: 6px;
+ }

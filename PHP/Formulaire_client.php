@@ -26,7 +26,7 @@ require "../Config/config.php";
                 <label>Telephone :</label>
                 <input type="text" name="telephone" required placeholder="Entrez le numero de telephone "><br><br>
                 <label>Mot de passe:</label>
-                <input type="password" name="prive" required placeholder="Creez un mot de passe"><br><br>
+                <input type="password" name="prive" placeholder="Creez un mot de passe" minlength="8" required><br><br>
                 <div class="but">
                  <button type="submit">Ajouter</button>
                  <button type="reset" >Annuler</button>

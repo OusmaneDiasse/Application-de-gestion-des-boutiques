@@ -19,7 +19,7 @@ button{
     padding: 6px;
 }
 td, th{
-    border: 1px solid black;
+     border-bottom: 1px solid #ddd;
 }   
 table{
     border-collapse: collapse;
@@ -38,6 +38,7 @@ span{
  background-color: white;
  text-align: center;
  padding-bottom: 20px;
+
 
     }
 .tableau{
@@ -106,4 +107,7 @@ h3{
 .montant{
     color: black;
     font-size: 25px;
+ }
+ .mouv{
+    margin-left: 280px;
  }

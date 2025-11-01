@@ -4,12 +4,13 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 80%;
   margin: 40px auto;
   background-color: rgb(234, 221, 221);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 300px;
 }
 
 h1 {
@@ -75,7 +76,7 @@ select {
   border: 1px solid;
   border-radius: 6px;
   font-size: 14px;
-  width: 180px;
+  width: 100px;
 }
 
 #ajouterClient {

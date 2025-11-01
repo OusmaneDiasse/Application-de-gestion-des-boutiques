@@ -21,7 +21,8 @@
      'email' => $E_MAIL_CLIENT,
      'prive' => $hashedPassword
      ));
-        echo "✅ Client ajouté avec succès.";
-    }
-  }
+        header("Location: listeclient.php?success=1");
+    exit();
+}
+ }
 ?>

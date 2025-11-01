@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 //Connexion à la base de données
  require_once '../Config/config.php';
 // calcjuler le chiffre d'affaire
@@ -12,7 +13,10 @@
  $total_creances = $req->fetch(PDO::FETCH_ASSOC)['total_creances']; //resultat sous forme de tableau associatif
  // calculer le nombre de produit en rupture de stock
  $req = $pdo->query('SELECT COUNT(*) AS produits_rupture FROM produit WHERE STOCK  <3');
- $produits_rupture = $req->fetch(PDO::FETCH_ASSOC)['produits_rupture'];  //resultat sous forme de tableau associatif    
+ $produits_rupture = $req->fetch(PDO::FETCH_ASSOC)['produits_rupture'];  //resultat sous forme de tableau associatif
+ // Le nombre de produits apprivisionné aujourd'hui
+ $req = $pdo->query('SELECT COUNT(*) AS produits_approvisionnes FROM stock WHERE DATE(DATE_ACHAT) = CURDATE()');
+ $produits_approvisionnes = $req->fetch(PDO::FETCH_ASSOC)['produits_approvisionnes'];  //resultat sous forme de tableau associatif    
  ?>
  <!DOCTYPE html>
 <html lang="fr">
@@ -23,12 +27,16 @@
     <link rel="stylesheet" href="../CSS/accueil.css">
 </head>
 <body>
+     <div class="inclu">
+      <?php include('menugerant.php');?>
+    </div>
     <div class="gestion">
     <div class="bienvenue"> 
     <h2>Bienvenue dans la page d'accueil pour le gérant/propriétaire de la boutique</h2>
     <p>Vue d'ensemble des statistiques de votre commerce.</p>
     </div>
     <div class="informations">
+        <div class="block3">
     <p class="affaires"> 
         <span class="valeur"><?php echo $chiffre_affaire; ?>  FCFA </span><br>
    <br> Chiffre d'affaire <br> 
@@ -44,20 +52,21 @@
           <br> Créances  <br>
             En cours
     </p>
+    </div>
+    <div class="block2">
     <p class="produits"> <span class="rupture">
 <?php echo $produits_rupture; ?> </span><br>
  <br>Produits en rupture <br>
  De stock
     </p> 
-    <div class="lien"> <a href="">Approvisionnement de la journée</a></div>
+<p class="approvisionnes"> <span class="nombre_produit">
+<?php echo $produits_approvisionnes; ?> </span><br>
+ <br> Approvisionnement <br>
+    d'aujourd'hui
+    </p>
+</div>
 </div>
 <div class="solde">
-    <div class="buttons">
-        <a href="" class="boutton1">Nouvelle Vente</a> 
-        <a href="listeclient.php" class="boutton2">Liste des clients</a>
-        <a href="afficher_produit.php" class="boutton3">Liste des produits</a>
-        <a href="" class="boutton4">Nouveau paiements</a>
-    </div>
     <table class="table">
     <caption>Créances échues et non soldées</caption>
     <tr>
@@ -68,7 +77,7 @@
         </tr>
         <?php
         // Requête pour récupérer les créances échues et non soldées    
-        $req = $pdo->query('SELECT client.NOM_CLIENT, creance.MONTANT_DU, creance.DATE_ECHEANCE, creance.ID_STATUT FROM creance JOIN facture ON creance.FAC_ID_FACTURE = facture.ID_FACTURE
+        $req = $pdo->query('SELECT client.NOM_CLIENT, creance.MONTANT_DU, creance.DATE_ECHEANCE, creance.ID_STATUT FROM creance JOIN facture ON creance.ID_FACTURE = facture.ID_FACTURE
 JOIN client ON facture.ID_CLIENT = client.ID_CLIENT WHERE creance.ID_STATUT = 1 AND creance.DATE_ECHEANCE < CURDATE()');
         $creances = $req->fetchAll(PDO::FETCH_ASSOC); // Récupérer tous les résultats
         if (!empty($creances)) {
@@ -142,11 +151,11 @@ JOIN client ON facture.ID_CLIENT = client.ID_CLIENT WHERE creance.ID_STATUT = 1 
     <tr>
         <th>L'heure</th>
         <th>Le montant</th>
-        <th>Le nombre d'article</th>
+        <th>Nbr d'article</th>
     </tr>
     <?php
     // Requête pour récupérer les 5 ventes plus récentes    
-    $req = $pdo->query('SELECT HEUR_VENTE AS heure_vente, SUM(produit.PRIX * vendre.QUANTITE_VENDUE) AS MONTANT_TOTAL, SUM(vendre.QUANTITE_VENDUE) AS NOMBRE_ARTICLES FROM vendre JOIN produit ON vendre.ID_PRODUIT = produit.ID_PRODUIT JOIN facture ON vendre.ID_FACTURE = facture.ID_FACTURE
+    $req = $pdo->query('SELECT HEURE_VENTE AS heure_vente, SUM(produit.PRIX * vendre.QUANTITE_VENDUE) AS MONTANT_TOTAL, SUM(vendre.QUANTITE_VENDUE) AS NOMBRE_ARTICLES FROM vendre JOIN produit ON vendre.ID_PRODUIT = produit.ID_PRODUIT JOIN facture ON vendre.ID_FACTURE = facture.ID_FACTURE
 GROUP BY facture.ID_FACTURE ORDER BY vendre.QUANTITE_VENDUE DESC LIMIT 5');
     $ventes_recentes = $req->fetchAll(PDO::FETCH_ASSOC); // Récupérer tous les résultats
     if (!empty($ventes_recentes)) {

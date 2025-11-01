@@ -5,16 +5,16 @@ body{
 .tableau{
     font-size: 16px;
     width: 60%;
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
-    margin-left: 250px;
+    margin-top: 6px;
+    margin-left: 380px;
+    
 }
 table, th, td{
-    border: 1px solid black;
+    border-bottom: 1px solid #ddd;
     padding: 10px;
     text-align: center;
     font-size: 16px;
@@ -82,4 +82,15 @@ button{
     background-color: white;
     color: black;
     width: 150px;
+}
+.alertsuccess {
+    background-color: #c9e886;
+    width: 100%;
+    color: rgb(10, 201, 7);
+    border: 1px solid #c3e6cb;
+      text-align: center;
+      border-radius: 6px;
+      margin-top: 50px;
+      justify-content: center;
+      margin-left: 5px;
 }

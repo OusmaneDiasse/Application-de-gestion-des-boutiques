@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require_once "../config/config.php";
 
 try {
@@ -44,7 +45,10 @@ try {
   <link rel="stylesheet" href="../CSS/style_liste_creance.css">
 </head>
 <body>
-<div>
+<div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
+<div class=boutique>
 <div class="form-container">
   <h1>Liste des Créances De La Boutique</h1>
 
@@ -82,7 +86,7 @@ try {
         <td><?= $c['ID_STATUT'] == 1 ? "En cours" : "Terminé"; ?></td>
         <td>
           <?php if ($c['ID_STATUT'] == 1): ?>
-            <a href="#?id=<?= $c['ID_CREANCE'] ?>">Ajouter un nouveau paiement</a>
+            <a href="paiement.php?id=<?= $c['ID_CREANCE'] ?>"class="buttonpaie">Ajouter un nouveau paiement</a>
           <?php endif; ?>
         </td>
       </tr>
@@ -92,6 +96,7 @@ try {
 <?php else: ?>
   <p>Aucune créance trouvée.</p>
 <?php endif; ?>
+</div>
 </div>
 </body>
 </html>

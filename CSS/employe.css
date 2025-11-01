@@ -1,0 +1,66 @@
+body {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+.menuclient {
+  width: 250px;
+  background-color: rgb(128, 0, 32);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+   justify-content: space-between;
+   position: fixed;
+}
+.titre {
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.nav{
+  margin-bottom: 330px;
+}
+.nav a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color:white;
+  text-decoration: none;
+}
+.buttt{
+  margin-top: 125px;
+   border-top: 1px solid rgba(255,255,255,0.2);
+   padding: 20px;
+}
+.butto{
+    margin-top: 175px;
+   border-top: 1px solid rgba(255,255,255,0.2);
+   padding: 20px;
+}
+.nav span{
+  color: white;
+}
+.nav a .icon {
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+.nav a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Pied de page */
+.Deconnexion {
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.Deconnexion a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+}
+.Deconnexion .icon {
+  margin-right: 10px;
+}
+.Deconnexion a:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}

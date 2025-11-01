@@ -1,30 +1,24 @@
+<?php
+//Bloque le retour en arriere apres la deconnexion
+require_once 'session.php';
+//Connexion à la base de données
+require_once "../Config/config.php";
+$profil=$_SESSION['id_utilisateur']
+?>
 <!DOCTYPE html>
 <html>
      <head>
-<<<<<<< HEAD
-<<<<<<< HEAD
          <meta charset="uft-8"/>
-=======
-         <meta charset="uft-8" />
->>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
-=======
-         <meta charset="uft-8" />
->>>>>>> 045bf5958e3956dc1644d6ac964c3cfd43ac0f0d
          <link rel="stylesheet" href="../CSS/Styl.css">
          <title>Profil utilisateur</title>
      </head>
      <body>
+         <div class="inclu">
+          <?php include('menugerant.php');?>
+         </div>
      <?php
-           require_once "../Config/config.php";
-<<<<<<< HEAD
-<<<<<<< HEAD
-      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=1');
-=======
-      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=1');
->>>>>>> 1de775a22c138403fd384f8794d0e9068dfc9276
-=======
-      $reponse = $pdo->query('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=1');
->>>>>>> 045bf5958e3956dc1644d6ac964c3cfd43ac0f0d
+      $reponse = $pdo->prepare('SELECT utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR= :id');
+          $reponse->execute(array('id' =>$profil));
           $utilisateur = $reponse->fetch();
           ?>
          <div class="Profil" id="profileView"> 
@@ -35,7 +29,7 @@
               <p><strong>Téléphone :</strong>  <?php  echo $utilisateur["TELEPHONE_UTILISATEUR"] ; ?> <br>
               <p><strong>Adresse :</strong>  <?php  echo $utilisateur["ADRESS_UTILISATEUR"] ; ?> <br>
               <div class="butt">
-                 <a href="modifier.php?id=1"><button >Modifier</button></a>
+                 <a href="modifier.php"><button >Modifier</button></a>
                  <button>Annuler</button>
                </div>
      </div>

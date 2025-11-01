@@ -24,7 +24,7 @@ if (isset($_POST['changer'])) {
         // Mise à jour selon la table
         $sql = $table === "CLIENT"
             ? "UPDATE CLIENT SET MOT_DE_PASSE = ?, CODE_REINIT = 0, FLAG_REINIT = FALSE WHERE E_MAIL_CLIENT = ?"
-            : "UPDATE UTILISATEUR SET MOT_DE_PASSE = ?, CODE_REINIT = 0, FLAG_REINIT = FALSE WHERE E_MAIL_UTILISATEUR = ?";
+            : "UPDATE UTILISATEUR SET MOT_DE_PASSE_UTILISATEUR = ?, CODE_REINIT = 0, FLAG_REINIT = FALSE WHERE E_MAIL_UTILISATEUR = ?";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$hash, $email]);

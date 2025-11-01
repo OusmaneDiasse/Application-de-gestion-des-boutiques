@@ -24,7 +24,7 @@ $id = $_SESSION['id_creance'];
 // Récupérer les détails des paiements pour la créance donnée
     try {
         // Récupérer les détails des paiements pour la créance donnée
-        $stmt = $pdo->prepare("SELECT paiement.*, creance.ID_CREANCE FROM paiement JOIN creance ON paiement.ID_CREANCE = creance.ID_CREANCE WHERE creance.ID_CREANCE = :id AND creance.FAC_ID_FACTURE IN (SELECT ID_FACTURE FROM facture WHERE ID_CLIENT = :id_client)");
+        $stmt = $pdo->prepare("SELECT paiement.*, creance.ID_CREANCE FROM paiement JOIN creance ON paiement.ID_CREANCE = creance.ID_CREANCE WHERE creance.ID_CREANCE = :id AND creance.ID_FACTURE IN (SELECT ID_FACTURE FROM facture WHERE ID_CLIENT = :id_client)");
         $stmt->execute([':id' => $id , ':id_client' => $id_client]);
         $paiements = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //Total a payer pour cette créance

@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require "../Config/config.php";
 try {
     $recherche = $_GET['search'] ?? '';
@@ -8,7 +9,7 @@ try {
     $recherche = '';
     }
        $sql ="SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE
-        WHERE role.ID_role=2 AND NOM_UTILISATEUR like :recherche";
+        WHERE role.ID_role=1 AND NOM_UTILISATEUR like :recherche";
          $stmt = $pdo->prepare($sql);
          $params = [':recherche' => "%$recherche%"];
           $stmt->execute($params);
@@ -20,10 +21,10 @@ try {
 <?php
  $message = "";
      if (isset($_GET['success']) && $_GET['success'] == 1) {
-     $message = '<div class="alertsuccess"> Gérant supprimé avec succès</div>';
+     $message = '<div class="alertsuccess"> Employe supprimé avec succès</div>';
     }  
 if (isset($_GET['error']) && $_GET['error'] == 1) {
-    $message = '<div class="alerterror"> Erreur lors de la suppression du gérant</div>';
+    $message = '<div class="alerterror"> Erreur lors de la suppression du employe</div>';
 }
 ?>
 <?php 
@@ -64,19 +65,19 @@ if (isset($_GET['error']) && $_GET['error'] == 1) {
 }
  if ($successe) {
         header("Location: tableau.php?successe=1");
-    } else {
+    }else{
         header("Location: tableau.php?errore=1");
     }
     exit();
-  }
+   }
 ?>
 <?php
 $ghat = "";
 if (isset($_GET['successe']) && $_GET['successe'] == 1) {
-    $ghat = '<div class="alertsuccess"> Gérant modifier avec succès</div>';
+    $ghat = '<div class="alertsuccess"> Employe modifier avec succès</div>';
 }
 if (isset($_GET['errore']) && $_GET['errore'] == 1) {
-    $ghat = '<div class="alerterror">❌ Erreur lors de la modification du gérant</div>';
+    $ghat = '<div class="alerterror">❌ Erreur lors de la modification du employe</div>';
 }
 ?>
 <!DOCTYPE html>
@@ -84,26 +85,25 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
      <head>
          <meta charset="uft-8" />
           <link rel="stylesheet" href="../CSS/Gerant.css">
-         <title>Les gerants de la boutique</title>
+         <title>Les employé de la boutique</title>
      </head>
    <body>
-     <?php 
-        $reponse = $pdo->query('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE
-        WHERE NOM_DU_ROLE="Gerant" ');
-        ?>
+    <div class="incluU">
+      <?php include('menugerant.php'); ?>
+    </div>
     <div class="All">
-       <?php echo $message; ?>
-       <?php echo $ghat; ?>
      <div class="introduction">
-         <h2> Liste des Gerants De La Boutique </h2>
-         <a href="ajout_utilisateur.php" class="btn">Ajouter un gerant</a>
+         <h2> Liste des Employés De La Boutique </h2>
+         <a href="ajout_utilisateur.php" class="btn">Ajouter un employe</a>
 
          <div class="search-container">
               <form method="GET" action="">
-                    <input type="text" name="search" placeholder="Rechercher un gerant..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                    <input type="text" name="search" placeholder="Rechercher un employé..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
                     <button type="submit">Rechercher</button>
                     <button type="submit" name="reset" value="">Réinitialiser</button>
               </form>
+              <?php echo $message; ?>
+                <?php echo $ghat; ?>
            </div>
                
         </div>
@@ -133,8 +133,33 @@ if (isset($_GET['errore']) && $_GET['errore'] == 1) {
              <?php endforeach ?>
          </table>
             <?php else: ?>
-            <p>Aucun gerant trouvé</p>
+            <p>Aucun employé trouvé</p>
             <?php endif; ?>
   </div>
+  <script>
+    // Sélectionne le message
+    const message = document.querySelector('.alertsuccess');
+    const sms = document.querySelector('.alerterror');
+
+    if (message) {
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            message.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                message.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }else{
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            sms.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                sms.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }
+</script>
    </body>
 </html>

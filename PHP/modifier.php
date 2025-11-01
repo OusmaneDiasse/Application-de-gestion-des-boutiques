@@ -1,3 +1,8 @@
+<?php
+require_once "../Config/config.php";
+session_start();
+$profil=$_SESSION['id_utilisateur']
+?>
 <!DOCTYPE html>
 <html>
      <head>
@@ -7,10 +12,8 @@
      </head>
      <body>
       <?php
-         require "../Config/config.php";
-          $ID_UTILISATEUR=$_GET['id'];
-          $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=ROLE_ID WHERE ID_UTILISATEUR=:id');
-          $reponse->execute(array('id' =>$ID_UTILISATEUR));
+          $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=:id');
+          $reponse->execute(array('id' =>$profil));
           $utilisateur = $reponse->fetch();
         ?>
     <div class="container">
@@ -24,7 +27,7 @@
           <label>Nom </label>
           <input type="text" name="editName" value="<?php echo $utilisateur["NOM_UTILISATEUR"] ; ?>"> <br><br>
           <label>Nouveau mot de passe </label>
-          <input type="password" name="editPassword" placeholder="Laisser vide si inchange" minlength="8" require><br><br>
+          <input type="password" name="editPassword" placeholder="Laisser vide si inchange" minlength="8" required><br><br>
           <label>Telephone </label>
           <input type="text" name="editPhone" value="<?php echo $utilisateur["TELEPHONE_UTILISATEUR"] ; ?>"> <br><br>
           <label>Adresse </label>
