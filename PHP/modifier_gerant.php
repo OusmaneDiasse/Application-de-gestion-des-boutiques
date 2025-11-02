@@ -1,3 +1,6 @@
+<?php
+require_once 'session.php';
+?>
 <!DOCTYPE html>
 <html>
      <head>
@@ -6,6 +9,9 @@
          <title>Profil utilisateur</title>
      </head>
      <body>
+      <div class="inclu">
+      <?php include('menugerant.php');?>
+    </div>
       <?php
          require "../Config/config.php";
           $ID_UTILISATEUR=$_GET['id'];
