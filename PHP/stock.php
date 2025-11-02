@@ -102,5 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById("prix_total").value = total.toFixed();
         }
     </script>
+   
 </body>
 </html>

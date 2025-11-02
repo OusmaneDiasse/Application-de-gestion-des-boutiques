@@ -1,7 +1,7 @@
 <?php
 require_once 'session.php';
 require_once '../Config/config.php';
-$message = "";
+$sms = "";
 
 if (isset($_GET['id'])) {
     $id_creance = (int) $_GET['id'];
@@ -34,15 +34,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $montant_du = $creance['MONTANT_DU'];
     $total_paye = $total['total_paye'];
+     // Récupérer le montant dû actuel
+    $montant_du = $creance['MONTANT_DU'];
+    $montant_paye = (float) $montant_paye;
+
+    // Calcul du nouveau montant dû
+    $nouveau_montant_du = max(0, $montant_du - $montant_paye);
+
+// Mettre à jour la créance
+$updateMontant = $pdo->prepare("UPDATE creance SET MONTANT_DU = ? WHERE ID_CREANCE = ?");
+$updateMontant->execute([$nouveau_montant_du, $id_creance]);
+
 
     if ($total_paye >= $montant_du) {
         $updateStatut = $pdo->prepare("UPDATE creance SET ID_STATUT = 2 WHERE ID_CREANCE = ?");
         $updateStatut->execute([$id_creance]);
-        $message = "Paiement réussi, créance soldée.";
+        $sms = "Paiement réussi, créance soldée.";
     } else {
         $statut = $pdo->prepare("UPDATE creance SET ID_STATUT = 1 WHERE ID_CREANCE = ?");
         $statut->execute([$id_creance]);
-        $message = "Paiement enregistré, créance toujours en cours.";
+        $sms = "Paiement enregistré, créance toujours en cours.";
+        
     }
 
     $creance = $pdo->prepare("SELECT ID_FACTURE, MONTANT_DU, ID_STATUT FROM creance WHERE ID_CREANCE = ?");
@@ -62,10 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="inclu">
         <?php include('menugerant.php'); ?>
     </div>
-        <?php if (!empty($message)): ?>
-           <p><?= $message ?></p>
-        <?php endif; ?>
             <div class="form-container">
+                <?php if (!empty($sms)): ?>
+           <p><?= $sms ?></p>
+        <?php endif; ?>
                  <form method="POST">
             <h2>Enregistrer un paiement</h2>
 
@@ -92,5 +104,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <br>
     <a href="liste_creance.php" class="cle">← Retour à la liste des créances</a>
 </div>
+<script>
+    // Sélectionne le sms
+    const sms = document.querySelector('.alerterror');
+
+    if (sms) {
+        // Après 3 secondes (3000 ms), on fait disparaître le sms
+        setTimeout(() => {
+            sms.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                sms.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du sms
+    }
+    </script>
 </body>
 </html>
