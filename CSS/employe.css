@@ -3,7 +3,9 @@ body {
   font-family: Arial, sans-serif;
 }
 .menuclient {
-  width: 250px;
+   display: flex;
+  font-family: Arial, sans-serif;
+  width: 18%;
   background-color: rgb(128, 0, 32);
   color: #fff;
   display: flex;
@@ -16,51 +18,30 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 .nav{
-  margin-bottom: 330px;
+  margin-bottom: 30%;
 }
 .nav a {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 8%;
   color:white;
   text-decoration: none;
 }
 .buttt{
-  margin-top: 125px;
+  margin-top: 25%;
    border-top: 1px solid rgba(255,255,255,0.2);
-   padding: 20px;
 }
 .butto{
-    margin-top: 175px;
+    margin-top:55%;
    border-top: 1px solid rgba(255,255,255,0.2);
-   padding: 20px;
 }
 .nav span{
   color: white;
 }
 .nav a .icon {
-  margin-right: 10px;
+  margin-right: 5%;
   font-size: 1.3em;
 }
 .nav a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* Pied de page */
-.Deconnexion {
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
-
-.Deconnexion a {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-decoration: none;
-  padding: 20px;
-}
-.Deconnexion .icon {
-  margin-right: 10px;
-}
-.Deconnexion a:hover{
   background-color: rgba(0, 0, 0, 0.2);
 }

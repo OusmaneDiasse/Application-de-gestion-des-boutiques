@@ -14,7 +14,7 @@
       // Authentification réussie
       $_SESSION['id_utilisateur']= $user['ID_UTILISATEUR'];
       $_SESSION['email'] = $email;
-      $_SESSION['role'] = $user['NOM_DU_ROLE'];
+      $_SESSION['role'] = $user['ID_ROLE'];
       // Redirection vers la page d'accueil du gérant ou de l'employé
       header("Location: accueil.php");
       exit();

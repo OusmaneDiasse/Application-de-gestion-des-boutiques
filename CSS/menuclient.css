@@ -4,10 +4,10 @@ body {
 }
 .menuclient {
   position: fixed;
-  height: 100vh;
-  width: 250px;
+  width: 18%;
   background-color: rgb(128, 0, 32);
   color: #fff;
+  height: 100%;
   display: flex;
   flex-direction: column;
    justify-content: space-between;
@@ -17,12 +17,12 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 .nav{
-  margin-bottom: 330px;
+  margin-bottom: 105%;
 }
 .nav a {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 8%;
   color:white;
   text-decoration: none;
 }
@@ -30,7 +30,7 @@ body {
   color: white;
 }
 .nav a .icon {
-  margin-right: 10px;
+  margin-right: 4%;
   font-size: 1.2em;
 }
 .nav a:hover {
@@ -38,8 +38,7 @@ body {
 }
 
 /* Pied de page */
-.buttt{
-  margin-top: 250px;
+.bom{
+  margin-top: 108%;
    border-top: 1px solid rgba(255,255,255,0.2);
-   padding: 20px;
 }

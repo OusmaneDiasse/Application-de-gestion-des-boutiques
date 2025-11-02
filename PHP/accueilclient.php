@@ -38,10 +38,11 @@ try {
     <link rel="stylesheet" href="../CSS/accueilclient.css">
 </head>
 <body>
-    <div class="all">
+    
     <div class="incluU">
       <?php include('menu_client.php'); ?>
     </div>
+    <div class="all">
     <div class="mouv">
     <div class="BLOCK">
         <div class="bienvenue">
