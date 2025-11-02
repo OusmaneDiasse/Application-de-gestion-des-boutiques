@@ -11,23 +11,22 @@ h2{
     text-align: center;
     color: white;
     background-color: rgb(128, 0, 32);
-    width: 900px;
+    width: 150%;
     margin-top: 40px;
     margin-bottom: 20px;
     height: 50px;
     padding-top: 10px;
-    margin-left: 350px;
+    margin-left: 80%;
 }
 table{
     margin-top: 50px;
-    width: 900px;
+    width: 150%;
     background-color: white;
     border-collapse: collapse;
-    margin-left: 350px;
-    margin-bottom: 250px;
+    margin-left: 80%;
+    margin-bottom: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: -19.8px;
-
+    margin-top: -6%;
 }
 th, td{
     border-bottom: 1px solid #ddd;

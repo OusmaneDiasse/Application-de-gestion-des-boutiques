@@ -1,6 +1,6 @@
 <?php
+require_once 'session.php';
 require_once '../Config/config.php';
-
 $message = "";
 
 if (isset($_GET['id'])) {
@@ -59,6 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../CSS/style_paiement.css">
 </head>
 <body>
+    <div class="inclu">
+        <?php include('menugerant.php'); ?>
+    </div>
         <?php if (!empty($message)): ?>
            <p><?= $message ?></p>
         <?php endif; ?>
@@ -85,8 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="button">
                 <input type="submit" value="Enregistrer" class="button-enregistrer">
             </div>
-        </form>
-    </div>
-    <a href="liste_creance.php">← Retour à la liste des créances</a>
+        </form> <br>
+        <br>
+    <a href="liste_creance.php" class="cle">← Retour à la liste des créances</a>
+</div>
 </body>
 </html>

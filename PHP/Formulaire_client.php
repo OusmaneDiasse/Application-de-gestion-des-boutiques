@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require "../Config/config.php";
  $message = "";
      if (isset($_GET['successe']) && $_GET['successe'] == 1) {
@@ -13,6 +14,9 @@ require "../Config/config.php";
          <title>Ajout d'un client</title>
      </head>
     <body>
+        <div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
             <!-- Formulaire -->
      <div class="All">
         <div class="container" id="profileView">

@@ -30,7 +30,7 @@ $profil=$_SESSION['id_utilisateur']
               <p><strong>Adresse :</strong>  <?php  echo $utilisateur["ADRESS_UTILISATEUR"] ; ?> <br>
               <div class="butt">
                  <a href="modifier.php"><button >Modifier</button></a>
-                 <button>Annuler</button>
+                 <a href="accueil.php"><button >Annuler</button></a>
                </div>
      </div>
      </body>

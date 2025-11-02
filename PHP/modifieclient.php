@@ -1,6 +1,6 @@
 <?php
+require_once 'session.php';
 require_once "../Config/config.php";
-session_start();
 $profil=$_SESSION['ID_CLIENT']
 ?>
 <!DOCTYPE html>
@@ -11,6 +11,9 @@ $profil=$_SESSION['ID_CLIENT']
          <title>Profil CLIENT</title>
      </head>
      <body>
+      <div class="incluU">
+      <?php include('menu_client.php'); ?>
+    </div>
       <?php
           $reponse = $pdo->prepare('SELECT * FROM client WHERE ID_CLIENT=:id');
           $reponse->execute(array('id' =>$profil));

@@ -51,7 +51,6 @@ try {
         </div>
         <div class="tableau">
             <table>
-                
        <caption>Mes 5 créances les plus récents</caption>     
            <tr>
                     <th>#</th>

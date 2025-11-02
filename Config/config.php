@@ -8,6 +8,8 @@ try {
 } catch (PDOException $e) {
     die('<div class="message error">Erreur de connexion : ' . htmlspecialchars($e->getMessage()) . '</div>');
 }
-
+// $motdepasse = "123456789";
+//  $hachage= password_hash($motdepasse,PASSWORD_ARGON2ID);
+//  echo $hachage;
 global $pdo;
 ?>

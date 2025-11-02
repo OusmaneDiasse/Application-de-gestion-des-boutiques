@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require_once "../Config/config.php";
 
 $id = $_GET['id'] ?? null;
@@ -49,6 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../CSS/style_ajout_produit.css">
 </head>
 <body>
+    <div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
 <div class="form-container">
      <p>
     <h1><?= $produit ? "Modifier Produit" : "Ajouter Produit" ?></h1>

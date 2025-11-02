@@ -1,6 +1,6 @@
 <?php
+require_once 'session.php';
 require_once "../Config/config.php";
-session_start();
 $profil=$_SESSION['id_utilisateur']
 ?>
 <!DOCTYPE html>
@@ -11,6 +11,9 @@ $profil=$_SESSION['id_utilisateur']
          <title>Profil utilisateur</title>
      </head>
      <body>
+      <div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
       <?php
           $reponse = $pdo->prepare('SELECT  utilisateur.*, role.NOM_DU_ROLE   FROM utilisateur JOIN role ON utilisateur.ID_ROLE=role.ID_ROLE WHERE ID_UTILISATEUR=:id');
           $reponse->execute(array('id' =>$profil));

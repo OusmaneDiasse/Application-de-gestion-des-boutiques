@@ -1,14 +1,9 @@
 body /* style de la page*/
 {
     background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
 }
 
 .form-container h1 
@@ -26,6 +21,9 @@ body /* style de la page*/
     max-width: 500px;
     color: white;
     padding: 25px;
+    margin-left: 40%;
+    margin-right: auto;
+    margin-top: 3%;
 }
 .form-group /* style des groupe de champs*/
 {

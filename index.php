@@ -1,3 +1,11 @@
+
+<?php
+require 'Config/config.php';
+  $sms = "";
+if (isset($_GET['error']) && $_GET['error'] == 1) {
+    $sms = '<div class="alerterror"> Email ou mot de passe incorrecte</div>';
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>                 
@@ -10,6 +18,7 @@
      <div class="container">
      <form action="../PHP/connexion.php" method="post">
           <h1>Bienvenue</h1>
+           <?php echo $sms ; ?>
        <p>Connectez-vous à votre compte pour accéder au tableau de bord</p> 
         <label for="email">Adresse mail:</label>
         <input type="email" name="email" id="email" placeholder="Entrez votre adresse email" required>
@@ -34,5 +43,19 @@
         <img src="IMG/image.jpg" alt="image" >
     </div>
     </div>
+    <script>
+    // Sélectionne le sms
+    const sms = document.querySelector('.alerterror');
+    if (sms) {
+        // Après 3 secondes (3000 ms), on fait disparaître le sms
+        setTimeout(() => {
+            sms.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                sms.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du sms
+    }
+</script>
 </body>
 </html>

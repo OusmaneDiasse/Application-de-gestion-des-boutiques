@@ -1,8 +1,7 @@
 <?php
+require_once 'session.php';
 //Connexion à la base de données
  require_once '../Config/config.php';
-// Récupérer l'ID de la créance et l'ID du client a l'aide d"une session 
-session_start();
 // Vérifier que le client est connecté
 if (!isset($_SESSION['ID_CLIENT'])) {
     die("Client non connecté.");
@@ -51,6 +50,10 @@ $id = $_SESSION['id_creance'];
     <link rel="stylesheet" href="../CSS/detail.css">
 </head>
 <body>
+    <div class="incluU">
+      <?php include('menu_client.php'); ?>
+    </div>
+    <div class="all">
 <h1>Détails de ma créance</h1>
 <div class="summary">
 <p>Tranche dû : <?php echo htmlspecialchars($montant_du['MONTANT_DU']); ?> FCFA</p>
@@ -79,5 +82,6 @@ $id = $_SESSION['id_creance'];
 
     ?>
 </table>
+</div>
 </body>
 </html>

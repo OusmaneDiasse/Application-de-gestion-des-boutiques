@@ -1,4 +1,5 @@
 <?php 
+require_once 'session.php';
 require_once "../config/config.php";
 
 // RECUPERER LES INFOS DU PRODUIT A AJOUTER DANS LE STOCK
@@ -45,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../CSS/style_stock.css">
 </head>
 <body>
+    <div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
     <div class="form-container">
         <h1>Ajouter Un Stock</h1>
         <form method="POST">

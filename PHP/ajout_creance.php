@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 require_once "../config/config.php";
 
 // Vérifier si l’ID de la facture est bien transmis
@@ -47,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../CSS/style_ajout_creance.css">
 </head>
 <body>
+    <div class="inclu">
+      <?php include('menugerant.php'); ?>
+    </div>
 <div class="form-container">
     <h1>Ajouter Créance</h1>
     <form method="POST" action="">

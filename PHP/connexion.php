@@ -18,7 +18,9 @@
       // Redirection vers la page d'accueil du gérant ou de l'employé
       header("Location: accueil.php");
       exit();
-   } 
+   }else {
+        header("Location: ../index.php?error=1");
+    } 
    //Vérifier si l'utilisateur est dans la table client
     $stmt = $pdo->prepare("SELECT * FROM client WHERE E_MAIL_CLIENT = :email LIMIT 1");
     $stmt->bindParam(':email', $email);
@@ -33,10 +35,9 @@
       // Redirection vers la page d'accueil du client
       header("Location: accueilclient.php");
       exit();
-   }else{ 
-      // Si l'authentification échoue
-   echo "Email ou mot de passe incorrect.";
-   }
+   }else {
+        header("Location: ../index.php?error=1");
+    }
 }catch (PDOException $e) {
       echo "Erreur de connexion à la base de données: " . $e->getMessage();
    }

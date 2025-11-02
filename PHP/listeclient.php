@@ -38,7 +38,7 @@ if ($recherche !== '') {
     <div class="inclu">
       <?php include('menugerant.php');?>
     </div>
-   <div class="tableau" >
+   <div class="tableau">
     <div class="block">
     <h1 class="caption">Liste des clients de la boutique</h1>
     <a href="Formulaire_client.php" class="client">Ajouter un client</a>
