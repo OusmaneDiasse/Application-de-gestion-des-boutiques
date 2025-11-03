@@ -76,9 +76,9 @@ try {
           <td><?= htmlspecialchars($p['DATE_DE_FABRICATION']) ?></td>
           <td><?= htmlspecialchars($p['DATE_DE_PEREMPTION']) ?></td>
           <td>
-            <a href="ajout_produit.php?id=<?= $p['ID_PRODUIT'] ?>">Modifier</a> 
+            <a href="ajout_produit.php?id=<?= $p['ID_PRODUIT'] ?>"class="btn-appro">Modifier</a> 
             <a href="?action=supprimer&id=<?= $p['ID_PRODUIT'] ?>"
-               onclick="return confirm('Voulez-vous supprimer ce produit ?');">Supprimer</a> <br><br>
+               onclick="return confirm('Voulez-vous supprimer ce produit ?');"class="btn-appro">Supprimer</a> <br><br>
                <a href="stock.php?id_produit=<?= urlencode($p['ID_PRODUIT']) ?>" class="btn-appro">Approvisionner</a>
           </td>
         </tr>
