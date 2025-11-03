@@ -6,14 +6,7 @@ exit();
  require_once "../Config/config.php";
  $role=$_SESSION['role'];
  ?>
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8"/>
-      <title>Menu Gerant</title> -->
       <link rel="stylesheet" href="../CSS/employe.css" >
-  <!-- </head>
-   <body> -->
     <?php if($role=='2') :?>
      <div class="menuclient">
          <div class="titre">
@@ -91,6 +84,3 @@ exit();
             </nav>
         </div>
         <?php endif; ?>
-
-    <!-- </body>
-</html> -->

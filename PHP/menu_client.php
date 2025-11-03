@@ -6,14 +6,8 @@ exit();
  require_once "../Config/config.php";
  $type=$_SESSION['type'];
  ?>
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8"/> -->
       <title>Menu Client</title>
       <link rel="stylesheet" href="../CSS/menuclient.css" >
-  <!-- </head>
-   <body> -->
     <div class="all">
     <?php if($type=='client') :?>
      <div class="menuclient">
@@ -45,5 +39,3 @@ exit();
         </div>
         <?php endif; ?>
     </div>
-    <!-- </body>
-</html> -->
