@@ -57,7 +57,7 @@ try {
     </div>
   
   <?php if (!empty($_GET['message'])): ?>
-    <p class="<?= strpos($_GET['message'], 'Erreur') ? 'error' : 'success' ?>">
+    <p class="message <?= strpos($_GET['message'], 'Erreur') ? 'error' : 'success' ?>">
       <?= htmlspecialchars($_GET['message']) ?>
     </p>
   <?php endif; ?>
@@ -90,26 +90,15 @@ try {
 </div>
 <script>
     // Sélectionne le message
-    const message = document.querySelector('.message');
-    const sms = document.querySelector('.error');
+    const msg = document.querySelector('.message');
 
-    if (message) {
+    if (msg) {
         // Après 3 secondes (3000 ms), on fait disparaître le message
         setTimeout(() => {
-            message.style.opacity = '0'; // fade out
+            msg.style.transition = 'opacity 0.5 ease' ;
+            msg.style.opacity = '0'; // fade out
             // Optionnel : le retirer du DOM après la transition
-            setTimeout(() => {
-                message.remove();
-            }, 500); // correspond à la durée de transition CSS
-        }, 3000); // temps d’affichage du message
-    }else{
-        // Après 3 secondes (3000 ms), on fait disparaître le message
-        setTimeout(() => {
-            sms.style.opacity = '0'; // fade out
-            // Optionnel : le retirer du DOM après la transition
-            setTimeout(() => {
-                sms.remove();
-            }, 500); // correspond à la durée de transition CSS
+            setTimeout(() => message.remove(), 500); // correspond à la durée de transition CSS
         }, 3000); // temps d’affichage du message
     }
 </script>

@@ -30,6 +30,7 @@ body {
     margin: 28px 0 10px;
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 button {
@@ -43,6 +44,7 @@ button {
     justify-content: center;
     align-items: center;
     text-align: center;
+    text-decoration: none;
 }
 
 table {

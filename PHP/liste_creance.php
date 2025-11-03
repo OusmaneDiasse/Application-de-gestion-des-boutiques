@@ -60,6 +60,11 @@ try {
           <button type="submit" name="reset" value="">Réinitialiser</button>
       </form>
   </div>
+  <?php if (!empty($_GET['message'])): ?>
+  <p class="message <?= strpos($_GET['message'], 'Erreur') ? 'error' : 'success' ?>">
+    <?= htmlspecialchars($_GET['message']) ?>
+  </p>
+<?php endif; ?>
 </div>
 <?php if ($creances): ?>
   <form method="GET" action="">
@@ -98,5 +103,19 @@ try {
 <?php endif; ?>
 </div>
 </div>
+<script>
+    // Sélectionne le message
+    const msg = document.querySelector('.message');
+
+    if (msg) {
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            msg.style.transition = 'opacity 0.5s ease' ;
+            msg.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => msg.remove(), 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }
+</script>
 </body>
 </html>
