@@ -3,7 +3,11 @@
 require_once 'session.php';
 //Connexion à la base de données
 require_once "../Config/config.php";
-$profil=$_SESSION['id_utilisateur']
+$profil=$_SESSION['id_utilisateur'];
+ $message = "";
+     if (isset($_GET['success']) && $_GET['success'] == 1) {
+     $message = '<div class="alertsuccess"> Profil modifié avec succes</div>';
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,6 +26,7 @@ $profil=$_SESSION['id_utilisateur']
           $utilisateur = $reponse->fetch();
           ?>
          <div class="Profil" id="profileView"> 
+            <?php echo $message;?>
               <h1>Profil Utilisateur</h1>
               <p><strong>Login / Email :</strong> <?php  echo $utilisateur["E_MAIL_UTILISATEUR"] ; ?> <br>
               <p><strong>Nom:</strong>  <?php  echo $utilisateur["NOM_UTILISATEUR"] ; ?> <br>
@@ -33,5 +38,20 @@ $profil=$_SESSION['id_utilisateur']
                  <a href="accueil.php"><button >Annuler</button></a>
                </div>
      </div>
+     
+     <script>
+        // Sélectionne le message
+    const message = document.querySelector('.alertsuccess');
+    if (message) {
+        // Après 3 secondes (3000 ms), on fait disparaître le message
+        setTimeout(() => {
+            message.style.opacity = '0'; // fade out
+            // Optionnel : le retirer du DOM après la transition
+            setTimeout(() => {
+                message.remove();
+            }, 500); // correspond à la durée de transition CSS
+        }, 3000); // temps d’affichage du message
+    }
+    </script>
      </body>
 </html>

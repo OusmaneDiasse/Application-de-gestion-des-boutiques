@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'session.php';
 require_once '../Config/config.php';
 require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
@@ -98,6 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <link rel="stylesheet" href="../CSS/style_utilisateur.css">
 </head>
 <body>
+    <div class="inclu">
+      <?php include('menugerant.php');?>
+    </div>
 
           <div class="container">
      <?php if (!empty($message)) echo $message; ?>

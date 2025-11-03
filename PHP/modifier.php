@@ -30,7 +30,7 @@ $profil=$_SESSION['id_utilisateur']
           <label>Nom </label>
           <input type="text" name="editName" value="<?php echo $utilisateur["NOM_UTILISATEUR"] ; ?>"> <br><br>
           <label>Nouveau mot de passe </label>
-          <input type="password" name="editPassword" placeholder="Laisser vide si inchange" minlength="8" required><br><br>
+          <input type="password" name="editPassword" placeholder="Laisser vide si inchange" minlength="8" ><br><br>
           <label>Telephone </label>
           <input type="text" name="editPhone" value="<?php echo $utilisateur["TELEPHONE_UTILISATEUR"] ; ?>"> <br><br>
           <label>Adresse </label>
@@ -38,6 +38,7 @@ $profil=$_SESSION['id_utilisateur']
 
           <div class="but">
              <button type="submit">Enregistrer</button>
+             
              <a href="Profil.php"><button type="button" >Annuler</button></a>
            </div>
         </form>

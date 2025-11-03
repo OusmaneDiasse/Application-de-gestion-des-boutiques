@@ -35,8 +35,8 @@
     ));
 }
     if ($success) {
-    echo "Profil modifié avec succes!";
+    header("location:profil.php?success=1");
 } else {
-    echo "Echec de la mise a jour.";
+    header("location:modifier.php?error=1");
 }
 ?>
