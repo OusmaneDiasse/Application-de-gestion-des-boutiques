@@ -39,7 +39,7 @@ $profil=$_SESSION['id_utilisateur']
           <div class="but">
              <button type="submit">Enregistrer</button>
              
-             <a href="Profil.php"><button type="button" >Annuler</button></a>
+             <a href="Profilclient.php"><button type="button" >Annuler</button></a>
            </div>
         </form>
      </div>
