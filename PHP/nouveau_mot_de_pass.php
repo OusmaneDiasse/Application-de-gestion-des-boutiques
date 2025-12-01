@@ -33,7 +33,7 @@ if (isset($_POST['changer'])) {
         session_unset();
         session_destroy();
         
-        header("Location: ../index.html?message=" . urlencode("Mot de passe modifié avec succès !"));
+        header("Location:../index.php?message=" . urlencode("Mot de passe modifié avec succès !"));
         exit();
     }
 

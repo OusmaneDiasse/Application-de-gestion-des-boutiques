@@ -24,7 +24,16 @@ body
     width: 400px;
     max-width: 500px;
     color: white;
-    padding: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    height: 410px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    
 }
 label     
 {
@@ -54,12 +63,12 @@ input
 }
  button
  {
-    padding: 8px;
+    padding: 7px;
     border-radius: 6px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 45%;
+    width: 50%;
     margin: 0 5px;
     display: flex;
     justify-content: center;
@@ -74,4 +83,47 @@ input
     display: none;
     margin-top: 5px;
     background-color: white;
+}
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: px;
+}
+.gestion
+{
+   border: 10px solid white;
+   border-radius: 10px;
+   box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+   height: 400px;
+   padding: 20px;
+   background-color: white;
+   color: black;
+   width: 400px;
+   text-align: center;
+   gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+img{
+background-color: white;
+width: 200px;
+height: 180px;
+padding-left: 10px;
+border-radius: 10px;
+}
+p{
+   font-size: 16px;
+   margin-top: 10px;
+   color: gray;
+   
+}
+.boutique{
+   color: rgb(128, 0, 32);
+   font-size: 24px;
+   margin-bottom: 10px;
 }
