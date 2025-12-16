@@ -69,10 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" name="PRIX" min="1" step="0.01" placeholder="#123" required value="<?= $produit['PRIX'] ?? '' ?>">
         </p>
         <p>
-            <label>Stock</label>
-            <input type="number" name="STOCK" min="1" placeholder="#123" required value="<?= $produit['STOCK'] ?? '' ?>">
-        </p>
-        <p>
             <label>Date de fabrication</label>
             <input type="date" name="DATE_DE_FABRICATION" required value="<?= $produit['DATE_DE_FABRICATION'] ?? '' ?>">
         </p>
