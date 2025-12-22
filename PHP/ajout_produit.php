@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
         ':nom' => $_POST['NOM_PRODUIT'],
         ':prix' => $_POST['PRIX'],
-        ':stock' => $_POST['STOCK'],
+       // ':stock' => $_POST['STOCK'],
         ':fab' => $_POST['DATE_DE_FABRICATION'],
         ':per' => $_POST['DATE_DE_PEREMPTION']
     ];
@@ -27,14 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Modifier
         $data[':id'] = $_POST['ID_PRODUIT'];
         $stmt = $pdo->prepare("UPDATE produit 
-            SET NOM_PRODUIT=:nom, PRIX=:prix, STOCK=:stock, DATE_DE_FABRICATION=:fab, DATE_DE_PEREMPTION=:per 
+            SET NOM_PRODUIT=:nom, PRIX=:prix, DATE_DE_FABRICATION=:fab, DATE_DE_PEREMPTION=:per 
             WHERE ID_PRODUIT=:id");
         $stmt->execute($data);
         header("Location: afficher_produit.php?message=Produit modifié avec succès");
     } else {
         // Ajouter
         $stmt = $pdo->prepare("INSERT INTO produit (NOM_PRODUIT, PRIX, STOCK, DATE_DE_FABRICATION, DATE_DE_PEREMPTION) 
-            VALUES (:nom, :prix, :stock, :fab, :per)");
+            VALUES (:nom, :prix, 0, :fab, :per)");
         $stmt->execute($data);
         header("Location: afficher_produit.php?message=Produit ajouté avec succès");
     }
@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>
             <label>Prix</label>
             <input type="number" name="PRIX" min="1" step="0.01" placeholder="#123" required value="<?= $produit['PRIX'] ?? '' ?>">
+        </p>
+        <p>
+        
         </p>
         <p>
             <label>Date de fabrication</label>

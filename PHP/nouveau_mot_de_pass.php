@@ -53,10 +53,10 @@ if (isset($_POST['changer'])) {
         <?php if (!empty($message)) echo "<p>" . htmlspecialchars($message) . "</p>"; ?>
         <form method="POST" autocomplete="off">
             <label>Nouveau mot de passe</label>
-            <input type="password" name="mdp" required><br><br>
+            <input type="password" name="mdp" minlength="8"required><br><br>
 
             <label>Confirmer le mot de passe</label>
-            <input type="password" name="confirmer" required><br><br>
+            <input type="password" name="confirmer" minlength="8"required><br><br>
             
             <div class="button-group">
             <button type="submit" name="changer">Changer le mot de passe</button>

@@ -65,13 +65,14 @@ try {
   <?php if ($produits): ?>
     <table>
       <tr>
-        <th>Nom</th><th>Prix</th>
+        <th>Nom</th><th>Prix</th><th>Stock</th>
         <th>Date Fabrication</th><th>Date Péremption</th><th>Action</th>
       </tr>
       <?php foreach ($produits as $p): ?>
         <tr>
           <td><?= htmlspecialchars($p['NOM_PRODUIT']) ?></td>
           <td><?= htmlspecialchars($p['PRIX']) ?> FCFA</td>
+          <td><?= htmlspecialchars($p['STOCK']) ?></td>
           <td><?= htmlspecialchars($p['DATE_DE_FABRICATION']) ?></td>
           <td><?= htmlspecialchars($p['DATE_DE_PEREMPTION']) ?></td>
           <td>
