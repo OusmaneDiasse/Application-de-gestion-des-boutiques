@@ -20,7 +20,7 @@ require_once 'session.php';
           $utilisateur = $reponse->fetch();
         ?>
     <div class="container">
-       <h1>Modifier gerant</h1>
+       <h1>Modifier Empoyé</h1>
        <form action="tableau.php" id="profileEdit" method="post">
           <input type="hidden" name="id" value="<?php echo $utilisateur['ID_UTILISATEUR']; ?>">
           <label>Email / Login </label>
@@ -29,8 +29,6 @@ require_once 'session.php';
           <input type="text" name="editRole" readonly value="<?php echo $utilisateur["NOM_DU_ROLE"] ; ?>"> <br><br>
           <label>Nom </label>
           <input type="text" name="editName" value="<?php echo $utilisateur["NOM_UTILISATEUR"] ; ?>"> <br><br>
-          <label>Nouveau mot de passe </label>
-          <input type="password" name="editPassword" placeholder="Laisser vide si inchange"><br><br>
           <label>Telephone </label>
           <input type="text" name="editPhone" value="<?php echo $utilisateur["TELEPHONE_UTILISATEUR"] ; ?>"> <br><br>
           <label>Adresse </label>
