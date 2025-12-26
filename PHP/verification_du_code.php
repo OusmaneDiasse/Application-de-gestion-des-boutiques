@@ -38,6 +38,7 @@ if (isset($_POST['verifier'])) {
     <link rel="stylesheet" href="../CSS/style_mot_de_pass_oublie.css">
 </head>
 <body>
+    <div class="container">
     <div class="form-container">
         <h1>Verifiez votre code</h1>
         <?php if (!empty($message)) echo "<p>$message</p>"; ?>
@@ -51,5 +52,16 @@ if (isset($_POST['verifier'])) {
             </div>
         </form> 
     </div>
+    <div class="gestion">
+        
+        <img src="../IMG/image.jpg" alt="image" >
+         <h1 class="boutique">Gestion des boutiques</h1>
+         <p>
+            Application simple et fiable pour suivre vos ventes,
+            vos clients et vos produits.  
+            Entrez votre email pour recevoir un code de réinitialisation.
+        </p>
+      </div>
+      </div>
 </body>
 </html>
