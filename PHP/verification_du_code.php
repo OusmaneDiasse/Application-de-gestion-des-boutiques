@@ -60,6 +60,7 @@ if (isset($_POST['verifier'])) {
             Application simple et fiable pour suivre vos ventes,
             vos clients et vos produits.  
             Entrez votre email pour recevoir un code de réinitialisation.
+            
         </p>
       </div>
       </div>
